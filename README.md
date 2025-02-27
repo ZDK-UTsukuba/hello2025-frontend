@@ -1,13 +1,15 @@
 # 新入生情報Web 2025 フロントエンド
+
 ![GitHub License](https://img.shields.io/github/license/ZDK-UTsukuba/hello2025-frontend)
 
 2025年度版筑波大学の学生宿舎に入居する新入生向けの情報ポータルのフロントエンド
 
 ## 開発環境セットアップ
+
 0. （必要ならば）[バックエンド](https://github.com/ZDK-UTsukuba/hello2025-backend)を立てる
-    * 環境変数を追加する
-    * `NEXT_PUBLIC_BACKEND_HOST`: hello2025-backendのURL
-    * `NEXT_PUBLIC_FRONTEND_HOST`: hello2025-frontendのURL
+   - 環境変数を追加する
+   - `NEXT_PUBLIC_BACKEND_HOST`: hello2025-backendのURL
+   - `NEXT_PUBLIC_FRONTEND_HOST`: hello2025-frontendのURL
 1. git、Node.js、npmを使用できる環境を用意する
 2. `git clone`をする
 3. `npm install`をする
