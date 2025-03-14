@@ -1,4 +1,5 @@
 /**
+ * esa の記事のデータ構造
  * @see https://docs.esa.io/posts/102#GET%20/v1/teams/:team_name/posts
  * */
 interface Post {
