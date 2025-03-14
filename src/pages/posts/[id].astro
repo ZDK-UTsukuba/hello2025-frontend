@@ -1,0 +1,22 @@
+---
+import { fetchPosts } from "../../esa-utils/fetch";
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const response = await fetchPosts();
+  const posts = response.posts;
+  const paths = posts.map((post) => ({
+    params: { id: post.number },
+    props: { post: post },
+  }));
+  return paths;
+}
+
+const { post } = Astro.props;
+---
+
+<Layout>
+  <div>
+    {post.body_md}
+  </div>
+</Layout>
