@@ -1,3 +1,5 @@
+import type { Post } from "./models";
+
 /**
  * esa の認証トークンを付与した fetch
  */

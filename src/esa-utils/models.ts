@@ -2,7 +2,7 @@
  * esa の記事のデータ構造
  * @see https://docs.esa.io/posts/102#GET%20/v1/teams/:team_name/posts
  * */
-interface Post {
+export interface Post {
   number: number;
   name: string;
   full_name: string;
@@ -33,7 +33,7 @@ interface Post {
 /**
  * Markdown の h2 `##` を質問に、それに続く p タグを回答にする
  */
-interface Faqs {
+export interface Faqs {
   questions: {
     question: string;
     answer: string;
