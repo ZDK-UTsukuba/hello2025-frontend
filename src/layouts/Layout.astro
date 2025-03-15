@@ -1,3 +1,15 @@
+---
+export interface Props {
+  pageTitle?: string;
+  title?: string;
+}
+import { SITE_TITLE } from "../consts";
+const { pageTitle, title } = Astro.props;
+
+const titleText =
+  title ?? (pageTitle ? `${pageTitle} - ${SITE_TITLE}` : SITE_TITLE);
+---
+
 <!doctype html>
 <html lang="ja">
   <head>
@@ -5,7 +17,7 @@
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro Basics</title>
+    <title>{titleText}</title>
   </head>
   <body>
     <slot />
