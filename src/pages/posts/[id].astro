@@ -32,7 +32,7 @@ const articleHtml = unified()
   .toString();
 ---
 
-<Layout>
+<Layout pageTitle={post.name}>
   <article set:html={articleHtml} />
 </Layout>
 
