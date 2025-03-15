@@ -31,11 +31,9 @@ export interface Post {
 }
 
 /**
- * Markdown の h2 `##` を質問に、それに続く p タグを回答にする
+ * Markdown の h2 `##` を質問にし、次の h2 まで・記事の終わりまでを回答とする
  */
-export interface Faqs {
-  questions: {
-    question: string;
-    answer: string;
-  }[];
+export interface Faq {
+  question: string;
+  answerHtml: string;
 }

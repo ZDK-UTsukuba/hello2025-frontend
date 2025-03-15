@@ -1,12 +1,35 @@
 ---
+import remarkParse from "remark-parse";
+import { unified } from "unified";
 import { fetchPost } from "../esa-utils/fetch";
+import { parseFaqs } from "../esa-utils/faq-parser";
 import Layout from "../layouts/Layout.astro";
 
 const faqPost = await fetchPost(import.meta.env.ESA_FAQ_NUMBER);
+const faqNodes = unified().use(remarkParse).parse(faqPost.body_md);
+const faqs = parseFaqs(faqNodes);
+console.dir(faqs);
 ---
 
-<Layout>
-  <div>
-    {faqPost.body_md}
-  </div>
+<Layout pageTitle="よくある質問">
+  <dl>
+    {
+      faqs.map((faq) => (
+        <>
+          <dt>{faq.question}</dt>
+          <dd set:html={faq.answerHtml} />
+        </>
+      ))
+    }
+  </dl>
 </Layout>
+
+<style>
+  dt {
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
+  dt::before {
+    content: "Q. ";
+  }
+</style>
