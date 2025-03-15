@@ -1,4 +1,8 @@
 ---
+import remarkParse from "remark-parse";
+import remarkRehype from "remark-rehype";
+import rehypeStringify from "rehype-stringify";
+import { unified } from "unified";
 import { fetchPosts } from "../../esa-utils/fetch";
 import Layout from "../../layouts/Layout.astro";
 
@@ -18,10 +22,23 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
+const articleHtml = unified()
+  .use(remarkParse)
+  .use(remarkRehype, { allowDangerousHtml: true })
+  .use(rehypeStringify, { allowDangerousHtml: true })
+  .processSync(post.body_md)
+  .toString();
 ---
 
 <Layout>
-  <div>
-    {post.body_md}
-  </div>
+  <article set:html={articleHtml} />
 </Layout>
+
+<style is:inline>
+  article {
+    margin: 8px;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+</style>
