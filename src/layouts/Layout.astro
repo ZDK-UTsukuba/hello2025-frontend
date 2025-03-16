@@ -26,17 +26,23 @@ const titleText =
 
 <style>
   :root {
+    --font-base:
+      -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN",
+      "Hiragino Sans", Meiryo, sans-serif, "Segoe UI Emoji";
+    --text-color: #000;
+    --visited: #444;
     --border-color: #bbb;
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
   }
   html,
   body {
     margin: 0;
     width: 100%;
     height: 100%;
-  }
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
+    font-family: var(--font-base);
   }
 </style>
