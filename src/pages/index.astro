@@ -1,29 +1,45 @@
 ---
+import { fetchPosts } from "../esa-utils/fetch";
 import Layout from "../layouts/Layout.astro";
+import ArticleCard from "../components/ArticleCard.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const response = await fetchPosts();
+const posts = response.posts;
 ---
 
 <Layout>
-  <div id="container">
-    <h1>新入生情報Web 2025 ただいまサイト準備中です</h1>
-    <p>
-      2025年度版の新入生情報Webは、3月末から4月初め頃に公開を予定しています。
-    </p>
-    <p>関連リンク</p>
-    <ul>
-      <li>
-        <a href="https://www.stb.tsukuba.ac.jp/~zdk/">全代会ホームページ</a>
-      </li>
-      <li>
-        <a href="https://hello.zdk.tsukuba.ac.jp/">2024年度版の新情Web</a>
-      </li>
-    </ul>
+  <div class="container">
+    <h1>
+      <span class="title-span">春からつくばで</span>
+      <span class="title-span">新生活を始める</span>
+      <span class="title-span">あなたに2025</span>
+    </h1>
+    <h2>記事一覧</h2>
+    <div class="card-container">
+      {posts.map((post) => <ArticleCard post={post} />)}
+    </div>
+    <h2>これってどうなの？そんなあなたに</h2>
+    <h3><a href="/faq">よくある質問</a></h3>
+    <h3><a href="/">お問い合せフォーム</a></h3>
   </div>
 </Layout>
 <style>
-  #container {
+  .container {
     margin: 8px;
+  }
+  .title-span {
+    display: inline-block;
+  }
+  .card-container {
+    display: flex;
+    flex-direction: column;
+    margin-inline: auto;
+    gap: 0.5rem;
+    width: 60%;
+  }
+  @media screen and (max-width: 768px) {
+    .card-container {
+      width: 90%;
+    }
   }
 </style>
