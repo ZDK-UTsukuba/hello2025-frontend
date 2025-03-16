@@ -10,7 +10,6 @@ const { post } = Astro.props;
 const imgSrc = getFirstImg(post) ?? backgroundImage.src;
 const href = `/posts/${post.number}`;
 const title = post.name;
-const updatedAt = new Date(post.updated_at).toLocaleDateString();
 ---
 
 <div>
