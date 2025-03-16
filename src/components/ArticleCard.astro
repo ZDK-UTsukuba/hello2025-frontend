@@ -1,0 +1,51 @@
+---
+import type { Post } from "../esa-utils/models";
+import { getFirstImg } from "../esa-utils/thumbnail";
+import backgroundImage from "../assets/background.svg";
+
+export interface Props {
+  post: Post;
+}
+const { post } = Astro.props;
+const imgSrc = getFirstImg(post) ?? backgroundImage.src;
+const href = `/posts/${post.number}`;
+const title = post.name;
+const updatedAt = new Date(post.updated_at).toLocaleDateString();
+---
+
+<div>
+  <a class="card" href={href}>
+    <h3 class="card-text">{title}</h3>
+    <img class="thumbnail" src={imgSrc} alt={title} />
+  </a>
+</div>
+
+<style>
+  .card {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text-color);
+    &:visited {
+      color: var(--visited);
+    }
+    &:hover {
+      background-color: #f0f0f0;
+    }
+  }
+  .card-text {
+    margin-inline: 0.8rem;
+  }
+  .thumbnail {
+    width: 30%;
+    border-radius: 0 8px 8px 0;
+  }
+  @media screen and (max-width: 768px) {
+    .thumbnail {
+      width: 40%;
+    }
+  }
+</style>
