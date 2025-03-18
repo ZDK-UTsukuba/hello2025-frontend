@@ -6,6 +6,7 @@ import rehypeStringify from "rehype-stringify";
 import { unified } from "unified";
 import { fetchPosts } from "../../esa-utils/fetch";
 import Layout from "../../layouts/Layout.astro";
+import Footer from "../../components/footer.astro";
 
 /**
  * 動的にページを生成するときに必須の関数
@@ -58,6 +59,7 @@ const articleHtml = unified()
       headingSelector: "h2, h3", // 目次として取得する見出しタグ
     });
   </script>
+  <Footer />
 </Layout>
 
 <style is:inline>

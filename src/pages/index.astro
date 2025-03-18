@@ -2,6 +2,7 @@
 import { fetchPosts } from "../esa-utils/fetch";
 import Layout from "../layouts/Layout.astro";
 import ArticleCard from "../components/ArticleCard.astro";
+import Footer from "../components/footer.astro";
 
 const response = await fetchPosts();
 const posts = response.posts;
@@ -22,6 +23,7 @@ const posts = response.posts;
     <h3><a href="/faq">よくある質問</a></h3>
     <h3><a href="/">お問い合せフォーム</a></h3>
   </div>
+  <Footer />
 </Layout>
 <style>
   .container {
