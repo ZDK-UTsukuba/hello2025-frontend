@@ -1,23 +1,23 @@
 ---
-import remarkParse from "remark-parse";
-import remarkGfm from "remark-gfm";
-import remarkRehype from "remark-rehype";
-import rehypeStringify from "rehype-stringify";
-import { unified } from "unified";
-import { fetchPosts } from "../../esa-utils/fetch";
-import Layout from "../../layouts/Layout.astro";
+import remarkParse from remark-parse;
+import remarkGfm from remark-gfm;
+import remarkRehype from remark-rehype;
+import rehypeStringify from rehype-stringify;
+import { unified } from unified;
+import { fetchPosts } from ....esa-utilsfetch;
+import Layout from ....layoutsLayout.astro;
 
-/**
- * 動的にページを生成するときに必須の関数
- *
- * @see https://docs.astro.build/ja/reference/routing-reference/#getstaticpaths
- */
+
+  動的にページを生成するときに必須の関数
+ 
+  @see httpsdocs.astro.buildjareferencerouting-reference#getstaticpaths
+ 
 export async function getStaticPaths() {
   const response = await fetchPosts();
   const posts = response.posts;
-  const paths = posts.map((post) => ({
-    params: { id: post.number },
-    props: { post: post },
+  const paths = posts.map((post) = ({
+    params { id post.number },
+    props { post post },
   }));
   return paths;
 }
@@ -26,41 +26,53 @@ const { post } = Astro.props;
 const articleHtml = unified()
   .use(remarkParse)
   .use(remarkGfm)
-  .use(remarkRehype, { allowDangerousHtml: true })
-  .use(rehypeStringify, { allowDangerousHtml: true })
+  .use(remarkRehype, { allowDangerousHtml true })
+  .use(rehypeStringify, { allowDangerousHtml true })
   .processSync(post.body_md)
   .toString();
 ---
 
-<Layout pageTitle={post.name}>
-  <article set:html={articleHtml} />
-</Layout>
+Layout pageTitle={post.name}
+  header
+    h1a href=..新入生情報Webah1
+  header
+  h1{post.name}h1
+  article sethtml={articleHtml} 
+Layout
 
-<style is:inline>
+style isinline
+  body {
+    padding-left 5px;
+  }
+  img {
+    width 100%;
+    height auto;
+    display block;
+  }
   article {
-    margin: 8px;
+    margin 8px;
   }
   h1 {
-    font-size: 2rem;
+    font-size 2rem;
   }
   table,
   th,
   td {
-    margin: 0;
-    border-spacing: 0;
+    margin 0;
+    border-spacing 0;
   }
   th,
   td {
-    border-inline-start: 1px solid var(--border-color);
-    border-block-start: 1px solid var(--border-color);
+    border-inline-start 1px solid var(--border-color);
+    border-block-start 1px solid var(--border-color);
   }
-  th:last-of-type,
-  td:last-of-type {
-    border-inline-end: 1px solid var(--border-color);
+  thlast-of-type,
+  tdlast-of-type {
+    border-inline-end 1px solid var(--border-color);
   }
-  tr:last-of-type {
+  trlast-of-type {
     td {
-      border-block-end: 1px solid var(--border-color);
+      border-block-end 1px solid var(--border-color);
     }
   }
-</style>
+style
