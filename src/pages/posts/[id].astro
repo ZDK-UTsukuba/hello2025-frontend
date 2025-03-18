@@ -38,6 +38,26 @@ const articleHtml = unified()
   </header>
   <h1>{post.name}</h1>
   <article set:html={articleHtml} />
+
+  <nav class="toc-nav">
+    <div class="toc-title">
+      <h2>目次</h2>
+    </div>
+    <div class="toc"></div>
+  </nav>
+   
+  <script>
+    import * as tocbot from 'tocbot'
+   
+    tocbot.init({
+      tocSelector: '.toc', // 目次を追加するクラス名
+      contentSelector: 'article', // 目次を取得するコンテンツ
+      activeLinkClass: 'to-link-active', // アクティブになった時のクラス名
+      listClass: 'toc-list', // olのクラス名
+      linkClass: 'toc-link', // aタグのクラス名
+      headingSelector: 'h2, h3' // 目次として取得する見出しタグ
+    })
+  </script>  
 </Layout>
 
 <style is:inline>
