@@ -9,18 +9,26 @@ const posts = response.posts;
 
 <Layout>
   <div class="container">
+    <h1>新入生情報Web</h1>
     <h1>
       <span class="title-span">春からつくばで</span>
       <span class="title-span">新生活を始める</span>
       <span class="title-span">あなたに2025</span>
     </h1>
+    <p>
+      新入生情報Webの素晴らしい説明文が入る予定
+    </p>
     <h2>記事一覧</h2>
     <div class="card-container">
       {posts.map((post) => <ArticleCard post={post} />)}
     </div>
     <h2>これってどうなの？そんなあなたに</h2>
-    <h3><a href="/faq">よくある質問</a></h3>
-    <h3><a href="/">お問い合せフォーム</a></h3>
+    <div class="card-container">
+      {posts
+        .filter((post) => post.number === 1503)
+        .map((post) => <ArticleCard post={post} />)}
+    </div>
+    <h3><a href="/">お問い合せフォーム</a></h3> 
   </div>
 </Layout>
 <style>
