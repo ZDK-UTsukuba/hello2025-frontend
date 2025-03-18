@@ -4,6 +4,7 @@ import { unified } from "unified";
 import { fetchPost } from "../esa-utils/fetch";
 import { parseFaqs } from "../esa-utils/faq-parser";
 import Layout from "../layouts/Layout.astro";
+import Footer from "../components/footer.astro";
 
 const faqPost = await fetchPost(import.meta.env.ESA_FAQ_NUMBER);
 const faqNodes = unified().use(remarkParse).parse(faqPost.body_md);
@@ -22,6 +23,7 @@ console.dir(faqs);
       ))
     }
   </dl>
+  <Footer />
 </Layout>
 
 <style>

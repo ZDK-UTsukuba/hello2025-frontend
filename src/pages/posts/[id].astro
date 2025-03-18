@@ -37,8 +37,6 @@ const articleHtml = unified()
   <header>
     <h1><a href="../">新入生情報Web</a></h1>
   </header>
-  <h1>{post.name}</h1>
-  <article set:html={articleHtml} />
 
   <nav class="toc-nav">
     <div class="toc-title">
@@ -46,6 +44,10 @@ const articleHtml = unified()
     </div>
     <div class="toc"></div>
   </nav>
+  
+  <h1>{post.name}</h1>
+
+  <article set:html={articleHtml} />
 
   <script>
     import * as tocbot from "tocbot";
