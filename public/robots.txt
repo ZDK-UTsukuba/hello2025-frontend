@@ -1,0 +1,5 @@
+# Googleに画像をクロールさせないようにする
+User-agent: Googlebot-Image
+Disallow: /
+
+sitemap: https://zdk.tsukuba.ac.jp/sitemap-index.xml
