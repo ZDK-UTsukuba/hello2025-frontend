@@ -2,4 +2,4 @@
 User-agent: Googlebot-Image
 Disallow: /
 
-sitemap: https://zdk.tsukuba.ac.jp/sitemap-index.xml
+sitemap: https://hello.zdk.tsukuba.ac.jp/sitemap-index.xml
