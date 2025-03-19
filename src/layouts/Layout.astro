@@ -2,9 +2,10 @@
 export interface Props {
   pageTitle?: string;
   title?: string;
+  description?: string;
 }
 import { SITE_TITLE } from "../consts";
-const { pageTitle, title } = Astro.props;
+const { pageTitle, title, description } = Astro.props;
 
 const titleText =
   title ?? (pageTitle ? `${pageTitle} - ${SITE_TITLE}` : SITE_TITLE);
@@ -18,6 +19,8 @@ const titleText =
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{titleText}</title>
+    <meta name="description" content={description} />
+    <meta property="og:site_name" content={SITE_TITLE} />
   </head>
   <body>
     <slot />
