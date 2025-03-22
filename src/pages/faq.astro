@@ -12,16 +12,22 @@ console.dir(faqs);
 ---
 
 <Layout pageTitle="よくある質問">
-  <dl>
-    {
-      faqs.map((faq) => (
-        <>
-          <dt>{faq.question}</dt>
-          <dd set:html={faq.answerHtml} />
-        </>
-      ))
-    }
-  </dl>
+  <div class="container">
+    <header>
+      <h1><a href="/">新入生情報Web</a></h1>
+    </header>
+    <h2>よくある質問</h2>
+    <dl>
+      {
+        faqs.map((faq) => (
+          <div class="faq-item">
+            <dt>{faq.question}</dt>
+            <dd set:html={faq.answerHtml} />
+          </div>
+        ))
+      }
+    </dl>
+  </div>
 </Layout>
 
 <style>
@@ -31,5 +37,21 @@ console.dir(faqs);
   }
   dt::before {
     content: "Q. ";
+  }
+  .container {
+    margin: 8px;
+  }
+  .faq-item {
+    background-color: #ade7ed;
+    width: 80%;
+    margin: auto;
+  }
+  @media screen and (max-width: 768px) {
+    .faq-item {
+      width: 100%;
+    }
+    dd {
+      margin-left: 8px;
+    }
   }
 </style>
