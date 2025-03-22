@@ -21,7 +21,11 @@ const faqImgSrc = getFirstImg(faqPost) ?? backgroundImage.src;
     </h1>
     <h2>記事一覧</h2>
     <div class="card-container">
-      {posts.map((post) => <ArticleCard post={post} />)}
+      {
+        posts
+          .filter((post) => post.number !== faqPost.number)
+          .map((post) => <ArticleCard post={post} />)
+      }
       <h2>これってどうなの？そんなあなたに</h2>
       <a href="/faq" class="faq-card">
         <h3 class="faq-text">よくある質問</h3>
