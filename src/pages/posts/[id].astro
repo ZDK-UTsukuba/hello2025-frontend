@@ -5,6 +5,7 @@ import remarkRehype from "remark-rehype";
 import rehypeStringify from "rehype-stringify";
 import { unified } from "unified";
 import { fetchPosts } from "../../esa-utils/fetch";
+import { fetchPost } from "../../esa-utils/fetch";
 import Layout from "../../layouts/Layout.astro";
 
 /**
@@ -13,15 +14,16 @@ import Layout from "../../layouts/Layout.astro";
  * @see https://docs.astro.build/ja/reference/routing-reference/#getstaticpaths
  */
 export async function getStaticPaths() {
+  const faqPost = await fetchPost(import.meta.env.ESA_FAQ_NUMBER);
   const response = await fetchPosts();
   const posts = response.posts;
-  const paths = posts.map((post) => ({
+  const blogPosts = posts.filter((post) => post.number !== faqPost.number);
+  const paths = blogPosts.map((post) => ({
     params: { id: post.number },
     props: { post: post },
   }));
   return paths;
 }
-
 const { post } = Astro.props;
 const articleHtml = unified()
   .use(remarkParse)
