@@ -2,22 +2,51 @@
 export interface Props {
   pageTitle?: string;
   title?: string;
+  description?: string;
+  og?: {
+    type?: string;
+    sitename?: string;
+    image?: string;
+    twitter?: {
+      card?: string;
+      site?: string;
+      creator?: string;
+    };
+  };
 }
 import { SITE_TITLE } from "../consts";
-const { pageTitle, title } = Astro.props;
+const { pageTitle, title, description, og } = Astro.props;
 
-const titleText =
-  title ?? (pageTitle ? `${pageTitle} - ${SITE_TITLE}` : SITE_TITLE);
+const metadata = {
+  title: title ?? (pageTitle ? `${pageTitle} - ${SITE_TITLE}` : SITE_TITLE),
+  description: description ?? "新入生情報Web 2025",
+  og: {
+    type: og?.type ?? "website",
+    sitename: og?.sitename ?? SITE_TITLE,
+    image: og?.image ?? Astro.site + "og.png", //完全修飾URLである必要がある
+    twitter: {
+      card: og?.twitter?.card ?? "summary_large_image",
+      site: og?.twitter?.site ?? "@bridge_tkb",
+      creator: og?.twitter?.creator ?? "@public_zdk",
+    },
+  },
+};
 ---
 
 <!doctype html>
-<html lang="ja">
+<html lang="ja" prefix="og: https://ogp.me/ns#">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{titleText}</title>
+    <title>{metadata.title}</title>
+    <meta name="description" content={metadata.description} />
+    <meta property="og:site_name" content={metadata.og.sitename} />
+    <meta property="og:image" content={metadata.og.image} />
+    <meta name="twitter:card" content={metadata.og.twitter.card} />
+    <meta property="twitter:site" content={metadata.og.twitter.site} />
+    <meta property="twitter:creator" content={metadata.og.twitter.creator} />
   </head>
   <body>
     <slot />
