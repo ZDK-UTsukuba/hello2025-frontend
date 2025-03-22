@@ -2,9 +2,14 @@
 import { fetchPosts } from "../esa-utils/fetch";
 import Layout from "../layouts/Layout.astro";
 import ArticleCard from "../components/ArticleCard.astro";
+import { getFirstImg } from "../esa-utils/thumbnail";
+import { fetchPost } from "../esa-utils/fetch";
+import backgroundImage from "../assets/background.svg";
 
 const response = await fetchPosts();
 const posts = response.posts;
+const faqPost = await fetchPost(import.meta.env.ESA_FAQ_NUMBER);
+const faqImgSrc = getFirstImg(faqPost) ?? backgroundImage.src;
 ---
 
 <Layout>
@@ -18,9 +23,9 @@ const posts = response.posts;
     <div class="card-container">
       {posts.map((post) => <ArticleCard post={post} />)}
       <h2>これってどうなの？そんなあなたに</h2>
-      <a href="/faq" id="faq-card">
-        <h3 id="faq-text">よくある質問</h3>
-        <img src="../../src/assets/background.svg" alt="faq" id="faq-thumbnail">
+      <a href="/faq" class="faq-card">
+        <h3 class="faq-text">よくある質問</h3>
+        <img class="faq-thumbnail" src={faqImgSrc} alt="faq" />
       </a>
     </div>
     <h3><a href="/">お問い合せフォーム</a></h3>
@@ -45,7 +50,7 @@ const posts = response.posts;
       width: 90%;
     }
   }
-  #faq-card {
+  .faq-card {
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -60,10 +65,10 @@ const posts = response.posts;
       background-color: #f0f0f0;
     }
   }
-  #faq-text {
+  .faq-text {
     margin-inline: 0.8rem;
   }
-  #faq-thumbnail {
+  .faq-thumbnail {
     width: 30%;
     border-radius: 0 8px 8px 0;
   }
