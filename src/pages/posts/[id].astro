@@ -17,7 +17,7 @@ export async function getStaticPaths() {
   const faqPost = await fetchPost(import.meta.env.ESA_FAQ_NUMBER);
   const response = await fetchPosts();
   const posts = response.posts;
-  const blogPosts = posts.filter((post) => post.number !== faqPost.number);
+  const blogPosts = posts.filter((post) => post.number !== import.meta.env.ESA_FAQ_NUMBER);
   const paths = blogPosts.map((post) => ({
     params: { id: post.number },
     props: { post: post },
