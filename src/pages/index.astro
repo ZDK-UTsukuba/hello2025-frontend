@@ -17,9 +17,12 @@ const posts = response.posts;
     <h2>記事一覧</h2>
     <div class="card-container">
       {posts.map((post) => <ArticleCard post={post} />)}
+      <h2>これってどうなの？そんなあなたに</h2>
+      <a href="/faq" id="faq-card">
+        <h3 id="faq-text">よくある質問</h3>
+        <img src="../../src/assets/background.svg" alt="faq" id="faq-thumbnail">
+      </a>
     </div>
-    <h2>これってどうなの？そんなあなたに</h2>
-    <h3><a href="/faq">よくある質問</a></h3>
     <h3><a href="/">お問い合せフォーム</a></h3>
   </div>
 </Layout>
@@ -40,6 +43,33 @@ const posts = response.posts;
   @media screen and (max-width: 768px) {
     .card-container {
       width: 90%;
+    }
+  }
+  #faq-card {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text-color);
+    &:visited {
+      color: var(--visited);
+    }
+    &:hover {
+      background-color: #f0f0f0;
+    }
+  }
+  #faq-text {
+    margin-inline: 0.8rem;
+  }
+  #faq-thumbnail {
+    width: 30%;
+    border-radius: 0 8px 8px 0;
+  }
+  @media screen and (max-width: 768px) {
+    .faq-thumbnail {
+      width: 40%;
     }
   }
 </style>
