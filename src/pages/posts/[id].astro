@@ -1,6 +1,7 @@
 ---
 import remarkParse from "remark-parse";
 import remarkGfm from "remark-gfm";
+import rehypeSlug from "rehype-slug";
 import remarkRehype from "remark-rehype";
 import rehypeStringify from "rehype-stringify";
 import { unified } from "unified";
@@ -29,6 +30,7 @@ const articleHtml = unified()
   .use(remarkParse)
   .use(remarkGfm)
   .use(remarkRehype, { allowDangerousHtml: true })
+  .use(rehypeSlug)
   .use(rehypeStringify, { allowDangerousHtml: true })
   .processSync(post.body_md)
   .toString();
