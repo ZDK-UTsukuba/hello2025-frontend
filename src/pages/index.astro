@@ -32,8 +32,9 @@ const blogPosts = posts.filter((post) => post.number !== faqPost.number);
   <Footer showTopLink={false} />
 </Layout>
 <style>
-  .container {
-    margin: 8px;
+  h1 {
+    width: 80%;
+    margin: 0 auto;
   }
   .title-span {
     display: inline-block;
@@ -43,11 +44,17 @@ const blogPosts = posts.filter((post) => post.number !== faqPost.number);
     flex-direction: column;
     margin-inline: auto;
     gap: 0.5rem;
-    width: 60%;
+  }
+  .container {
+    margin: 8px auto;
+    width: 620px;
   }
   @media screen and (max-width: 768px) {
-    .card-container {
-      width: 90%;
+    .container {
+      width: 100%;
+    }
+    h1 {
+      width: 100%;
     }
   }
 </style>
