@@ -1,3 +1,7 @@
+---
+const { showTopLink } = Astro.props;
+---
+
 <footer>
   <div class="link">
     <a href="https://shinkan-web.zdk.tsukuba.ac.jp/">新歓Web</a>
@@ -7,7 +11,7 @@
     >
     <a href="https://github.com/ZDK-UTsukuba/hello2025-frontend">ソースコード</a
     >
-    <a href="/" id="toppage">トップページ</a>
+    {showTopLink && <a href="/">トップページ</a>}
   </div>
   <div>
     <a href="https://www.stb.tsukuba.ac.jp/~zdk/"
