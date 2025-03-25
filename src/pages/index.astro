@@ -22,21 +22,14 @@ const blogPosts = posts.filter((post) => post.number !== faqPost.number);
       <span class="title-span">新生活を始める</span>
       <span class="title-span">あなたに2025</span>
     </h1>
-    <h2>記事一覧</h2>
     <div class="card-container">
+      <h2>記事一覧</h2>
       {blogPosts.map((post) => <ArticleCard post={post} />)}
       <h2>これってどうなの？そんなあなたに</h2>
       <Card href="/faq" title="よくある質問" imgSrc={faqImgSrc} />
     </div>
   </div>
-  <Footer />
-  <p>
-    このリポジトリは <a
-      href="https://github.com/ZDK-UTsukuba/hello2025-frontend"
-      target="_blank"
-      rel="noopener noreferrer">GitHub</a
-    > にて公開しています。
-  </p>
+  <Footer showTopLink={false} />
 </Layout>
 <style>
   .container {

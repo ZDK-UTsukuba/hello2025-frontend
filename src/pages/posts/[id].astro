@@ -60,7 +60,7 @@ const articleHtml = unified()
       headingSelector: "h2, h3", // 目次として取得する見出しタグ
     });
   </script>
-  <Footer />
+  <Footer showTopLink={true} />
 </Layout>
 
 <style>
@@ -163,7 +163,8 @@ const articleHtml = unified()
     margin-bottom: 10px;
   }
 
-  @media (min-width: 800px) { /*謎pxで切り替えられるようになりました。chatgptぱわーで*/
+  @media (min-width: 800px) {
+    /*謎pxで切り替えられるようになりました。chatgptぱわーで*/
     .container {
       display: grid;
       grid-template-columns: 1fr 1fr; /* 2カラム */

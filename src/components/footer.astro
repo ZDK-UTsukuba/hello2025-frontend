@@ -1,17 +1,28 @@
+---
+export interface Props {
+  showTopLink: boolean;
+}
+const { showTopLink } = Astro.props;
+---
+
 <footer>
   <div class="link">
-    <a href="https://shinkan-web.zdk.tsukuba.ac.jp/">新歓web</a>
+    <a href="https://shinkan-web.zdk.tsukuba.ac.jp/">新歓Web</a>
     <a
       href="https://docs.google.com/forms/d/e/1FAIpQLScv0E7IiT1cbdD2fK4IEyI6RojRcYUkWKZBFHSUciCsScn-fQ/viewform"
       >お問い合わせ</a
     >
-    <a href="/" id="toppage">トップページ</a>
+    <a href="https://github.com/ZDK-UTsukuba/hello2025-frontend">ソースコード</a
+    >
+    {showTopLink && <a href="/">トップページ</a>}
   </div>
   <div>
     <a href="https://www.stb.tsukuba.ac.jp/~zdk/"
       >© 全学学類・専門学群・総合学域群代表者会議 2024</a
     >
-    <a href="https://www.stb.tsukuba.ac.jp/~shinkan/">新入生歓迎特別委員会</a>
+    <a href="https://www.stb.tsukuba.ac.jp/~zdk/shintoku"
+      >新入生歓迎特別委員会</a
+    >
     <a href="https://www.stb.tsukuba.ac.jp/~zdk/campus-life-environment"
       >生活環境委員会</a
     >
@@ -36,13 +47,3 @@
     padding-top: 60px;
   }
 </style>
-
-<script>
-  window.onload = function () {
-    const currentUrl = window.location.pathname;
-
-    if (currentUrl === "/") {
-      document.getElementById("toppage")!.style.display = "none";
-    }
-  };
-</script>
