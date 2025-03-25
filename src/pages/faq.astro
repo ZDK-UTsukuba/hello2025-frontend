@@ -18,16 +18,16 @@ console.dir(faqs);
     </header>
     <h2>よくある質問</h2>
     <div class="inner">
-    <dl>
-      {
-        faqs.map((faq) => (
-          <div class="faq-item">
-            <dt>{faq.question}</dt>
-            <dd set:html={faq.answerHtml} />
-          </div>
-        ))
-      }
-    </dl>
+      <dl>
+        {
+          faqs.map((faq) => (
+            <div class="faq-item">
+              <dt>{faq.question}</dt>
+              <dd set:html={faq.answerHtml} />
+            </div>
+          ))
+        }
+      </dl>
     </div>
   </div>
 </Layout>
@@ -50,7 +50,7 @@ console.dir(faqs);
     width: 80%;
     margin: auto;
   }
-  .inner{
+  .inner {
     width: 620px;
     margin: 8px auto;
   }
@@ -61,10 +61,11 @@ console.dir(faqs);
     dd {
       margin-left: 8px;
     }
-    .inner{
+    .inner {
       width: 100%;
     }
-    .container{
+    .container {
       width: 100%;
     }
+  }
 </style>
