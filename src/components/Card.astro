@@ -1,0 +1,43 @@
+---
+export interface Props {
+  href: string | URL;
+  title: string;
+  imgSrc: string;
+}
+const { href, title, imgSrc } = Astro.props;
+---
+
+<a class="card" href={href}>
+  <h3 class="card-text">{title}</h3>
+  <img class="thumbnail" src={imgSrc} alt={title} />
+</a>
+
+<style>
+  .card {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text-color);
+    &:visited {
+      color: var(--visited);
+    }
+    &:hover {
+      background-color: #f0f0f0;
+    }
+  }
+  .card-text {
+    margin-inline: 0.8rem;
+  }
+  .thumbnail {
+    width: 30%;
+    border-radius: 0 8px 8px 0;
+  }
+  @media screen and (max-width: 768px) {
+    .thumbnail {
+      width: 40%;
+    }
+  }
+</style>
