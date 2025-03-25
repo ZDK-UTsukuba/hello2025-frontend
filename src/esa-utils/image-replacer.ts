@@ -1,14 +1,12 @@
-import type { VFileCompatible } from "vfile";
 import { visit } from "unist-util-visit";
 import { downloadAndSave } from "./download-image";
 import type { Node } from "unist";
-import type { TransformCallback } from "unified";
 
 export function imageReplacer() {
   //   for (const child of ast.children) {
   //   }
   const imageNodes: { node: Node; originalUrl: string }[] = [];
-  return async (tree: Node, file: VFileCompatible) => {
+  return async (tree: Node) => {
     visit(tree, (node) => {
       if (
         node.type === "image" &&
