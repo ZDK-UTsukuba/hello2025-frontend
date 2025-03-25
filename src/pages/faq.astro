@@ -13,10 +13,7 @@ console.dir(faqs);
 
 <Layout pageTitle="よくある質問">
   <div class="container">
-    <header>
-      <h1><a href="/">新入生情報Web</a></h1>
-    </header>
-    <h2>よくある質問</h2>
+    <h1>よくある質問</h1>
     <dl>
       {
         faqs.map((faq) => (
@@ -28,30 +25,30 @@ console.dir(faqs);
       }
     </dl>
   </div>
-</Layout>
 
-<style>
-  dt {
-    font-size: 1.3rem;
-    font-weight: bold;
-  }
-  dt::before {
-    content: "Q. ";
-  }
-  .container {
-    margin: 8px;
-  }
-  .faq-item {
-    background-color: #ade7ed;
-    width: 80%;
-    margin: auto;
-  }
-  @media screen and (max-width: 768px) {
+  <style>
+    dt {
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
+    dt::before {
+      content: "Q. ";
+    }
+    .container {
+      margin: 8px;
+    }
     .faq-item {
-      width: 100%;
+      background-color: #ade7ed;
+      width: 80%;
+      margin: auto;
     }
-    dd {
-      margin-left: 8px;
+    @media screen and (max-width: 768px) {
+      .faq-item {
+        width: 100%;
+      }
+      dd {
+        margin-left: 8px;
+      }
     }
-  }
-</style>
+  </style>
+</Layout>
