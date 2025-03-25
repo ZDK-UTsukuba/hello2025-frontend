@@ -4,6 +4,7 @@ import { unified } from "unified";
 import { fetchPost } from "../esa-utils/fetch";
 import { parseFaqs } from "../esa-utils/faq-parser";
 import Layout from "../layouts/Layout.astro";
+import Footer from "../components/footer.astro";
 
 const faqPost = await fetchPost(import.meta.env.ESA_FAQ_NUMBER);
 const faqNodes = unified().use(remarkParse).parse(faqPost.body_md);
@@ -25,30 +26,31 @@ console.dir(faqs);
       }
     </dl>
   </div>
-
-  <style>
-    dt {
-      font-size: 1.3rem;
-      font-weight: bold;
-    }
-    dt::before {
-      content: "Q. ";
-    }
-    .container {
-      margin: 8px;
-    }
-    .faq-item {
-      background-color: #ade7ed;
-      width: 80%;
-      margin: auto;
-    }
-    @media screen and (max-width: 768px) {
-      .faq-item {
-        width: 100%;
-      }
-      dd {
-        margin-left: 8px;
-      }
-    }
-  </style>
+  <Footer showTopLink={true} />
 </Layout>
+
+<style>
+  dt {
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
+  dt::before {
+    content: "Q. ";
+  }
+  .container {
+    margin: 8px;
+  }
+  .faq-item {
+    background-color: #ade7ed;
+    width: 80%;
+    margin: auto;
+  }
+  @media screen and (max-width: 768px) {
+    .faq-item {
+      width: 100%;
+    }
+    dd {
+      margin-left: 8px;
+    }
+  }
+</style>
