@@ -1,6 +1,7 @@
 ---
 import remarkParse from "remark-parse";
 import remarkGfm from "remark-gfm";
+import rehypeSlug from "rehype-slug";
 import remarkRehype from "remark-rehype";
 import rehypeStringify from "rehype-stringify";
 import { unified } from "unified";
@@ -16,34 +17,36 @@ import Footer from "../../components/footer.astro";
 export async function getStaticPaths() {
   const response = await fetchPosts();
   const posts = response.posts;
-  const paths = posts.map((post) => ({
+  const blogPosts = posts.filter(
+    (post) => post.number !== import.meta.env.ESA_FAQ_NUMBER,
+  );
+  const paths = blogPosts.map((post) => ({
     params: { id: post.number },
     props: { post: post },
   }));
   return paths;
 }
-
 const { post } = Astro.props;
 const articleHtml = unified()
   .use(remarkParse)
   .use(remarkGfm)
   .use(remarkRehype, { allowDangerousHtml: true })
+  .use(rehypeSlug)
   .use(rehypeStringify, { allowDangerousHtml: true })
   .processSync(post.body_md)
   .toString();
 ---
 
 <Layout pageTitle={post.name}>
-  <header>
-    <h1><a href="../">新入生情報Web</a></h1>
-  </header>
+  <div class="container">
+    <h1 class="title">{post.name}</h1>
+    <nav class="toc-nav">
+      <h2 class="toc-title">目次</h2>
+      <div class="toc"></div>
+    </nav>
 
-  <nav class="toc-nav">
-    <div class="toc-title">
-      <h2>目次</h2>
-    </div>
-    <div class="toc"></div>
-  </nav>
+    <article set:html={articleHtml} />
+  </div>
 
   <h1>{post.name}</h1>
 
@@ -64,14 +67,66 @@ const articleHtml = unified()
   <Footer />
 </Layout>
 
-<style is:inline>
-  body {
-    padding-left: 5px;
+<style>
+  .title {
+    font-size: 2rem;
   }
+  .toc-nav {
+    padding: 16px;
+    border: solid 1px var(--border-color);
+    border-radius: 8px;
+    width: fit-content;
+  }
+  .toc-title {
+    margin: 0;
+    font-size: 1.2rem;
+  }
+  .toc {
+    ol {
+      padding-inline-start: 0;
+    }
+    ol ol {
+      padding-inline-start: 16px;
+    }
+    li {
+      list-style-type: none;
+      color: var(--link-color);
+      font-weight: 700;
+    }
+    ol ol > li {
+      font-weight: normal;
+    }
+    a {
+      font-size: 1rem;
+      color: var(--link-color);
+      text-decoration: none;
+    }
+    a:hover {
+      color: var(--text-color);
+    }
+  }
+  .container {
+    width: 80%;
+    margin: auto;
+    padding: 16px;
+    overflow-wrap: break-word;
+  }
+  @media screen and (max-width: 768px) {
+    .container {
+      width: 90%;
+    }
+    .toc-nav {
+      width: 100%;
+    }
+  }
+</style>
+
+<style is:inline>
   img {
-    width: 100%;
-    height: auto;
+    max-width: 100%;
+    max-height: 30rem;
     display: block;
+    margin: 8px 0;
   }
   article {
     margin: 8px;

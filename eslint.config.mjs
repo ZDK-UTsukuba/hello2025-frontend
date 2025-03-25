@@ -9,4 +9,7 @@ export default [
   eslintConfigPrettier,
   ...tseslint.configs.recommended,
   ...eslintPluginAstro.configs["jsx-a11y-recommended"],
+  {
+    ignores: ["**/Layout.astro"],
+  },
 ];

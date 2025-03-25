@@ -6,11 +6,13 @@ import Footer from "../components/footer.astro";
 import { getFirstImg } from "../esa-utils/thumbnail";
 import { fetchPost } from "../esa-utils/fetch";
 import backgroundImage from "../assets/background.svg";
+import Card from "../components/Card.astro";
 
 const response = await fetchPosts();
 const posts = response.posts;
 const faqPost = await fetchPost(import.meta.env.ESA_FAQ_NUMBER);
 const faqImgSrc = getFirstImg(faqPost) ?? backgroundImage.src;
+const blogPosts = posts.filter((post) => post.number !== faqPost.number);
 ---
 
 <Layout>
@@ -22,15 +24,19 @@ const faqImgSrc = getFirstImg(faqPost) ?? backgroundImage.src;
     </h1>
     <h2>記事一覧</h2>
     <div class="card-container">
-      {posts.map((post) => <ArticleCard post={post} />)}
+      {blogPosts.map((post) => <ArticleCard post={post} />)}
       <h2>これってどうなの？そんなあなたに</h2>
-      <a href="/faq" class="faq-card">
-        <h3 class="faq-text">よくある質問</h3>
-        <img class="faq-thumbnail" src={faqImgSrc} alt="faq" />
-      </a>
+      <Card href="/faq" title="よくある質問" imgSrc={faqImgSrc} />
     </div>
   </div>
   <Footer />
+  <p>
+    このリポジトリは <a
+      href="https://github.com/ZDK-UTsukuba/hello2025-frontend"
+      target="_blank"
+      rel="noopener noreferrer">GitHub</a
+    > にて公開しています。
+  </p>
 </Layout>
 <style>
   .container {
@@ -49,33 +55,6 @@ const faqImgSrc = getFirstImg(faqPost) ?? backgroundImage.src;
   @media screen and (max-width: 768px) {
     .card-container {
       width: 90%;
-    }
-  }
-  .faq-card {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    text-decoration: none;
-    color: var(--text-color);
-    &:visited {
-      color: var(--visited);
-    }
-    &:hover {
-      background-color: #f0f0f0;
-    }
-  }
-  .faq-text {
-    margin-inline: 0.8rem;
-  }
-  .faq-thumbnail {
-    width: 30%;
-    border-radius: 0 8px 8px 0;
-  }
-  @media screen and (max-width: 768px) {
-    .faq-thumbnail {
-      width: 40%;
     }
   }
 </style>
