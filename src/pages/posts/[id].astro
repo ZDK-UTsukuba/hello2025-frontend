@@ -8,6 +8,7 @@ import { unified } from "unified";
 import { fetchPosts } from "../../esa-utils/fetch";
 import Layout from "../../layouts/Layout.astro";
 import Footer from "../../components/footer.astro";
+import { imageReplacer } from "../../esa-utils/image-replacer";
 
 /**
  * 動的にページを生成するときに必須の関数
@@ -27,14 +28,14 @@ export async function getStaticPaths() {
   return paths;
 }
 const { post } = Astro.props;
-const articleHtml = unified()
+const articleHtml = await unified()
   .use(remarkParse)
   .use(remarkGfm)
+  .use(imageReplacer)
   .use(remarkRehype, { allowDangerousHtml: true })
   .use(rehypeSlug)
   .use(rehypeStringify, { allowDangerousHtml: true })
-  .processSync(post.body_md)
-  .toString();
+  .process(post.body_md);
 ---
 
 <Layout pageTitle={post.name}>
@@ -45,7 +46,7 @@ const articleHtml = unified()
       <div class="toc"></div>
     </nav>
 
-    <article set:html={articleHtml} />
+    <article set:html={articleHtml.toString()} />
   </div>
 
   <script>

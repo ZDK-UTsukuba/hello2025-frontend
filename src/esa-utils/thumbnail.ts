@@ -3,6 +3,7 @@ import type { Post } from "./models";
 import rehypeParse from "rehype-parse";
 import { find } from "unist-util-find";
 import type { Node } from "hast";
+import { getImage } from "astro:assets";
 
 interface ImgNode extends Node {
   type: "element";
@@ -25,11 +26,16 @@ function isImg(node: Node | undefined): node is ImgNode {
   return true;
 }
 
-export function getFirstImg(post: Post): string | undefined {
+export function getFirstImg(post: Post): Promise<string> | undefined {
   const hast = unified().use(rehypeParse).parse(post.body_html);
   const imgNode = find(hast, { type: "element", tagName: "img" });
   if (isImg(imgNode)) {
-    return imgNode.properties.src;
+    return getImage({
+      src: imgNode.properties.src,
+      inferSize: true,
+      format: "webp",
+      quality: "low",
+    }).then((r) => r.src);
   } else {
     return undefined;
   }

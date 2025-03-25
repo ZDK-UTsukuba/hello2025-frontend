@@ -21,7 +21,8 @@
     "remark-rehype": "^11.1.1",
     "tocbot": "^4.35.2",
     "unified": "^11.0.5",
-    "unist-util-find": "^3.0.0"
+    "unist-util-find": "^3.0.0",
+    "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
@@ -37,6 +38,8 @@
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-organize-imports": "^4.1.0",
     "typescript": "^5.7.3",
-    "typescript-eslint": "^8.25.0"
+    "typescript-eslint": "^8.25.0",
+    "unist": "^0.0.1",
+    "vfile": "^6.0.3"
   }
 }

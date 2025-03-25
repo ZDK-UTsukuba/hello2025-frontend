@@ -7,4 +7,7 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   site: "https://hello.zdk.tsukuba.ac.jp",
   integrations: [sitemap()],
+  image: {
+    domains: ["img.esa.io"],
+  },
 });

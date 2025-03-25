@@ -11,7 +11,7 @@ import Card from "../components/Card.astro";
 const response = await fetchPosts();
 const posts = response.posts;
 const faqPost = await fetchPost(import.meta.env.ESA_FAQ_NUMBER);
-const faqImgSrc = getFirstImg(faqPost) ?? backgroundImage.src;
+const faqImgSrc = await getFirstImg(faqPost) ?? backgroundImage.src;
 const blogPosts = posts.filter((post) => post.number !== faqPost.number);
 ---
 
