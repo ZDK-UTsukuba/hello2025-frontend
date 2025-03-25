@@ -17,18 +17,16 @@ console.dir(faqs);
       <h1><a href="/">新入生情報Web</a></h1>
     </header>
     <h2>よくある質問</h2>
-    <div class="inner">
-      <dl>
-        {
-          faqs.map((faq) => (
-            <div class="faq-item">
-              <dt>{faq.question}</dt>
-              <dd set:html={faq.answerHtml} />
-            </div>
-          ))
-        }
-      </dl>
-    </div>
+    <dl>
+      {
+        faqs.map((faq) => (
+          <div class="faq-item">
+            <dt>{faq.question}</dt>
+            <dd set:html={faq.answerHtml} />
+          </div>
+        ))
+      }
+    </dl>
   </div>
 </Layout>
 
@@ -41,18 +39,13 @@ console.dir(faqs);
     content: "Q. ";
   }
   .container {
-    width: 80%;
-    margin: auto;
     padding: 16px;
+    width: 620px;
+    margin: 8px auto;
   }
   .faq-item {
     background-color: #ade7ed;
-    width: 80%;
     margin: auto;
-  }
-  .inner {
-    width: 620px;
-    margin: 8px auto;
   }
   @media screen and (max-width: 768px) {
     .faq-item {
@@ -60,9 +53,6 @@ console.dir(faqs);
     }
     dd {
       margin-left: 8px;
-    }
-    .inner {
-      width: 100%;
     }
     .container {
       width: 100%;

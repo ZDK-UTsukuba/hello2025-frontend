@@ -21,17 +21,15 @@ const blogPosts = posts.filter((post) => post.number !== faqPost.number);
       <span class="title-span">新生活を始める</span>
       <span class="title-span">あなたに2025</span>
     </h1>
-    <div class="inner">
-      <h2>記事一覧</h2>
-      <div class="card-container">
-        {blogPosts.map((post) => <ArticleCard post={post} />)}
-        <h2>これってどうなの？そんなあなたに</h2>
-        <Card href="/faq" title="よくある質問" imgSrc={faqImgSrc} />
-      </div>
-      <h3>
-        <a href="https://forms.gle/b6q9WRu9522G6xAA9">お問い合せフォーム</a>
-      </h3>
+    <h2>記事一覧</h2>
+    <div class="card-container">
+      {blogPosts.map((post) => <ArticleCard post={post} />)}
+      <h2>これってどうなの？そんなあなたに</h2>
+      <Card href="/faq" title="よくある質問" imgSrc={faqImgSrc} />
     </div>
+    <h3>
+      <a href="https://forms.gle/b6q9WRu9522G6xAA9">お問い合せフォーム</a>
+    </h3>
     <p>
       このリポジトリは <a
         href="https://github.com/ZDK-UTsukuba/hello2025-frontend"
@@ -55,15 +53,12 @@ const blogPosts = posts.filter((post) => post.number !== faqPost.number);
     margin-inline: auto;
     gap: 0.5rem;
   }
-  .inner {
+  .container {
     margin: 8px auto;
     width: 620px;
   }
-  .container {
-    margin: 8px;
-  }
   @media screen and (max-width: 768px) {
-    .inner {
+    .container {
       width: 100%;
     }
     h1 {
