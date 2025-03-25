@@ -66,12 +66,14 @@ const articleHtml = unified()
 <style>
   .title {
     font-size: 2rem;
+    grid-column: span 2;
   }
   .toc-nav {
     padding: 16px;
     border: solid 1px var(--border-color);
     border-radius: 8px;
     width: fit-content;
+    grid-column: 1;
   }
   .toc-title {
     margin: 0;
@@ -106,6 +108,7 @@ const articleHtml = unified()
     margin: auto;
     padding: 16px;
     overflow-wrap: break-word;
+    grid-template-columns: auto 1fr;
   }
   @media screen and (max-width: 768px) {
     .container {
@@ -148,6 +151,27 @@ const articleHtml = unified()
   tr:last-of-type {
     td {
       border-block-end: 1px solid var(--border-color);
+    }
+  }
+
+  .container {
+    display: block;
+  }
+
+  .item {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  @media (min-width: 800px) { /*謎pxで切り替えられるようになりました。chatgptぱわーで*/
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr; /* 2カラム */
+      gap: 20px;
+    }
+    .item {
+      width: auto;
+      margin-bottom: 0;
     }
   }
 </style>
