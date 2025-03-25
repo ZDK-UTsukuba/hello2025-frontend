@@ -39,12 +39,14 @@ const articleHtml = unified()
 <Layout pageTitle={post.name}>
   <div class="container">
     <h1 class="title">{post.name}</h1>
-    <nav class="toc-nav">
-      <h2 class="toc-title">目次</h2>
-      <div class="toc"></div>
-    </nav>
+    <div class="inner">
+      <nav class="toc-nav">
+        <h2 class="toc-title">目次</h2>
+        <div class="toc"></div>
+      </nav>
 
-    <article set:html={articleHtml} />
+      <article set:html={articleHtml} />
+    </div>
   </div>
 
   <script>
@@ -105,11 +107,18 @@ const articleHtml = unified()
     padding: 16px;
     overflow-wrap: break-word;
   }
+  .inner {
+    width: 620px;
+    margin: 8px auto;
+  }
   @media screen and (max-width: 768px) {
     .container {
-      width: 90%;
+      width: 100%;
     }
     .toc-nav {
+      width: 100%;
+    }
+    .inner {
       width: 100%;
     }
   }

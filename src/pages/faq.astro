@@ -17,6 +17,7 @@ console.dir(faqs);
       <h1><a href="/">新入生情報Web</a></h1>
     </header>
     <h2>よくある質問</h2>
+    <div class="inner">
     <dl>
       {
         faqs.map((faq) => (
@@ -27,6 +28,7 @@ console.dir(faqs);
         ))
       }
     </dl>
+    </div>
   </div>
 </Layout>
 
@@ -39,12 +41,18 @@ console.dir(faqs);
     content: "Q. ";
   }
   .container {
-    margin: 8px;
+    width: 80%;
+    margin: auto;
+    padding: 16px;
   }
   .faq-item {
     background-color: #ade7ed;
     width: 80%;
     margin: auto;
+  }
+  .inner{
+    width: 620px;
+    margin: 8px auto;
   }
   @media screen and (max-width: 768px) {
     .faq-item {
@@ -53,5 +61,10 @@ console.dir(faqs);
     dd {
       margin-left: 8px;
     }
-  }
+    .inner{
+      width: 100%;
+    }
+    .container{
+      width: 100%;
+    }
 </style>
