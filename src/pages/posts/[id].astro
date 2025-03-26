@@ -31,9 +31,9 @@ const { post } = Astro.props;
 const articleHtml = await unified()
   .use(remarkParse)
   .use(remarkGfm)
-  .use(imageReplacer)
   .use(remarkRehype, { allowDangerousHtml: true })
   .use(rehypeSlug)
+  .use(imageReplacer)
   .use(rehypeStringify, { allowDangerousHtml: true })
   .process(post.body_md);
 ---
