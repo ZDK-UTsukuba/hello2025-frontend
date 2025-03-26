@@ -3,7 +3,7 @@ import type { Post } from "./models";
 import rehypeParse from "rehype-parse";
 import { find } from "unist-util-find";
 import { optimizeImage } from "./download-image";
-import { isImg } from "./imgNode";
+import { isImg } from "./img-node";
 
 export function getFirstImg(post: Post): Promise<string> | undefined {
   const hast = unified().use(rehypeParse).parse(post.body_html);
