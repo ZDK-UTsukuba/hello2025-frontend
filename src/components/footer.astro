@@ -1,49 +1,101 @@
----
-export interface Props {
-  showTopLink: boolean;
-}
-const { showTopLink } = Astro.props;
----
-
-<footer>
-  <div class="link">
-    <a href="https://shinkan-web.zdk.tsukuba.ac.jp/">新歓Web</a>
-    <a
-      href="https://docs.google.com/forms/d/e/1FAIpQLScv0E7IiT1cbdD2fK4IEyI6RojRcYUkWKZBFHSUciCsScn-fQ/viewform"
-      >お問い合わせ</a
-    >
-    <a href="https://github.com/ZDK-UTsukuba/hello2025-frontend">ソースコード</a
-    >
-    {showTopLink && <a href="/">トップページ</a>}
+<footer class="footer">
+  <div class="md-flex md-justify-between">
+    <a href="https://jajaaan.co.jp/" class="footer__logo">
+      <img src="/public/zdk_logo_full.svg" height=10% alt="全学学類・専門学群・総合学域群代表者会議" />
+    </a>
+    <div class="grid">
+      <div>
+        <p class="footer__navi-heading">サイト内マップ</p>
+        <ul class="footer__navi">
+          <li><a href="/">トップページ</a></li>
+          <li><a href="/faq">よくある質問</a></li>
+          <li><a href=https://docs.google.com/forms/d/e/1FAIpQLScv0E7IiT1cbdD2fK4IEyI6RojRcYUkWKZBFHSUciCsScn-fQ/viewform">質問フォーム(Google Forms)</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer__navi-heading">関連サイト</p>
+        <ul class="footer__navi">
+          <li><a href="https://shinkan-web.zdk.tsukuba.ac.jp/">新歓Web</a></li>
+         
+        </ul>
+      </div>
+      <div>
+        <p class="footer__navi-heading">このサイトは、全代会の以下の委員会により運営されています。</p>
+        <ul class="footer__navi">
+          <li><a href="https://www.stb.tsukuba.ac.jp/~zdk/shintoku">新入生歓迎特別委員会</a></li>
+          <li><a href="https://www.stb.tsukuba.ac.jp/~zdk/campus-life-environment">生活環境委員会</a></li>
+          <li><a href="https://www.stb.tsukuba.ac.jp/~zdk/ipc">情報処理推進特別委員会</a></li>
+        </ul>
+      </div>
+    </div>
   </div>
-  <div>
-    <a href="https://www.stb.tsukuba.ac.jp/~zdk/"
-      >© 全学学類・専門学群・総合学域群代表者会議 2024</a
-    >
-    <a href="https://www.stb.tsukuba.ac.jp/~zdk/shintoku"
-      >新入生歓迎特別委員会</a
-    >
-    <a href="https://www.stb.tsukuba.ac.jp/~zdk/campus-life-environment"
-      >生活環境委員会</a
-    >
-    <a href="https://www.stb.tsukuba.ac.jp/~zdk/ipc">情報処理推進特別委員会</a>
-  </div>
+  <hr />
+  <p class="copyright">© 2025 <a href="https://jajaaan.co.jp/">全学学類・専門学群・総合学域群代表者会議</a> All Rights Reserved.
+    <br>また、このサイトのソースコードは<a href="https://github.com/ZDK-UTsukuba/hello2025-frontend" class="githublink">こちら</a>にて公開しています。
+  </p>
 </footer>
 
 <style>
-  a {
-    margin-left: 8px;
-    margin-right: 8px;
-  }
-  div {
+  ul {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: #4b5564;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #000;
+}
+
+hr {
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #e5e7eb;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.footer {
+  padding: 2rem;
+  font-size: 15px;
+  color: #4b5564;
+  background: #fff;
+}
+
+.footer__navi-heading {
+  font-weight: 600;
+}
+
+.footer__logo {
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+
+.footer__navi li {
+  margin-bottom: 0.75rem;
+}
+
+.githublink {
+  color: #0c8a49;
+}
+
+@media (min-width: 768px) {
+  .md-flex {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding-bottom: 30px;
-    font-size: 80%;
   }
-  div.link {
-    font-size: 150%;
-    padding-top: 60px;
+
+  .md-justify-between {
+    justify-content: space-between;
   }
-</style>
+
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
