@@ -3,8 +3,6 @@ import { downloadAndSave } from "./download-image";
 import type { Node } from "unist";
 
 export function imageReplacer() {
-  //   for (const child of ast.children) {
-  //   }
   const imageNodes: { node: Node; originalUrl: string }[] = [];
   return async (tree: Node) => {
     visit(tree, (node) => {
