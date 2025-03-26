@@ -1,6 +1,6 @@
 import { visit } from "unist-util-visit";
 import { optimizeImage } from "./download-image";
-import type { Node } from "unist";
+import type { Node } from "hast";
 import { isImg, type ImgNode } from "./thumbnail";
 
 export function imageReplacer() {
