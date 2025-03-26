@@ -2,7 +2,7 @@ import { unified } from "unified";
 import type { Post } from "./models";
 import rehypeParse from "rehype-parse";
 import { find } from "unist-util-find";
-import { optimizeImage } from "./download-image";
+import { optimizeImage } from "./optimize-image";
 import { isImg } from "./img-node";
 
 export function getFirstImg(post: Post): Promise<string> | undefined {

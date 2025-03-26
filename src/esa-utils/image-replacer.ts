@@ -1,5 +1,5 @@
 import { visit } from "unist-util-visit";
-import { optimizeImage } from "./download-image";
+import { optimizeImage } from "./optimize-image";
 import type { Node } from "hast";
 import { isImg, type ImgNode } from "./img-node";
 
