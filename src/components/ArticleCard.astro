@@ -8,7 +8,8 @@ export interface Props {
   post: Post;
 }
 const { post } = Astro.props;
-const imgSrc = (await getFirstImg(post)) ?? backgroundImage.src;
+const firstImg = await getFirstImg(post);
+const imgSrc = firstImg ?? backgroundImage.src;
 const href = `/posts/${post.number}`;
 const title = post.name;
 ---
