@@ -15,6 +15,7 @@ export interface Props {
     };
   };
 }
+import { meta } from "@eslint/js";
 import { SITE_TITLE } from "../consts";
 const { pageTitle, title, description, og } = Astro.props;
 
@@ -45,6 +46,7 @@ const metadata = {
     <meta name="generator" content={Astro.generator} />
     <title>{metadata.title}</title>
     <meta name="description" content={metadata.description} />
+    <meta property="og:title" content={metadata.og.title} />
     <meta property="og:site_name" content={metadata.og.sitename} />
     <meta property="og:image" content={metadata.og.image} />
     <meta name="twitter:card" content={metadata.og.twitter.card} />
