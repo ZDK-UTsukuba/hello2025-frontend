@@ -15,27 +15,80 @@ console.dir(faqs);
 <Layout pageTitle="よくある質問">
   <div class="container">
     <h1>よくある質問</h1>
-    <dl>
+    <nav class="toc-nav">
+      <h2 class="toc-title">目次</h2>
+      <div class="toc"></div>
+    </nav>
+    <article>
       {
         faqs.map((faq) => (
           <div class="faq-item">
-            <dt>{faq.question}</dt>
-            <dd set:html={faq.answerHtml} />
+            <h2 class="question">{faq.question}</h2>
+            <div set:html={faq.answerHtml} />
           </div>
         ))
       }
-    </dl>
+    </article>
   </div>
+
+  <script>
+    import * as tocbot from "tocbot";
+
+    tocbot.init({
+      tocSelector: ".toc", // 目次を追加するクラス名
+      contentSelector: "article", // 目次を取得するコンテンツ
+      activeLinkClass: "to-link-active", // アクティブになった時のクラス名
+      listClass: "toc-list", // olのクラス名
+      linkClass: "toc-link", // aタグのクラス名
+      headingSelector: "h2, h3", // 目次として取得する見出しタグ
+    });
+  </script>
+
   <Footer showTopLink={true} />
 </Layout>
 
 <style>
-  dt {
+  .question {
     font-size: 1.3rem;
     font-weight: bold;
   }
-  dt::before {
+  .question::before {
     content: "Q. ";
+  }
+
+  .toc-nav {
+    padding: 16px;
+    border: solid 1px var(--border-color);
+    border-radius: 8px;
+    width: fit-content;
+  }
+  .toc-title {
+    margin: 0;
+    font-size: 1.2rem;
+  }
+  .toc {
+    ol {
+      padding-inline-start: 0;
+    }
+    ol ol {
+      padding-inline-start: 16px;
+    }
+    li {
+      list-style-type: none;
+      color: var(--link-color);
+      font-weight: 700;
+    }
+    ol ol > li {
+      font-weight: normal;
+    }
+    a {
+      font-size: 1rem;
+      color: var(--link-color);
+      text-decoration: none;
+    }
+    a:hover {
+      color: var(--text-color);
+    }
   }
   .container {
     padding: 16px;
