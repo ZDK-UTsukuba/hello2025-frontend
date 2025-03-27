@@ -23,7 +23,8 @@ const metadata = {
   description: description ?? "新入生情報Web 2025",
   og: {
     type: og?.type ?? "website",
-    title: og?.title ?? (pageTitle ? `${pageTitle} - ${SITE_TITLE}` : SITE_TITLE),
+    title:
+      og?.title ?? (pageTitle ? `${pageTitle} - ${SITE_TITLE}` : SITE_TITLE),
     sitename: og?.sitename ?? SITE_TITLE,
     image: og?.image ?? Astro.site + "og.png", //完全修飾URLである必要がある
     twitter: {
