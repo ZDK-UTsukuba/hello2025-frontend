@@ -29,23 +29,25 @@ const ids = hashes.map((h) => h.slice(0, hashLength));
 <Layout pageTitle="よくある質問">
   <div class="container">
     <Header />
-    <h1 class="title">よくある質問</h1>
-    <nav class="toc-nav">
-      <h2 class="toc-title">目次</h2>
-      <div class="toc"></div>
-    </nav>
-    <article>
-      {
-        faqs.map((faq, i) => (
-          <div class="faq-item">
-            <h2 class="question" id={ids[i]}>
-              {faq.question}
-            </h2>
-            <div set:html={faq.answerHtml} />
-          </div>
-        ))
-      }
-    </article>
+    <div class="article-container">
+      <h1 class="title">よくある質問</h1>
+      <nav class="toc-nav">
+        <h2 class="toc-title">目次</h2>
+        <div class="toc"></div>
+      </nav>
+      <article>
+        {
+          faqs.map((faq, i) => (
+            <div class="faq-item">
+              <h2 class="question" id={ids[i]}>
+                {faq.question}
+              </h2>
+              <div set:html={faq.answerHtml} />
+            </div>
+          ))
+        }
+      </article>
+    </div>
   </div>
 
   <script>
@@ -105,10 +107,12 @@ const ids = hashes.map((h) => h.slice(0, hashLength));
     }
   }
   .container {
-    padding: 16px;
     width: 620px;
     margin: 8px auto;
     counter-reset: number 0;
+  }
+  .article-container {
+    padding: 16px;
   }
   .faq-item {
     padding: 0.5em 1em;
