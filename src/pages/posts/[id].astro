@@ -69,6 +69,10 @@ const articleHtml = await unified()
 <style>
   .title {
     font-size: 2rem;
+    padding-inline: 11px;
+    padding-block: 0.1rem;
+    border-inline-start: 11px solid var(--theme-color-dark);
+    border-block-end: 1px solid var(--border-color);
   }
   .toc-nav {
     padding: 16px;
@@ -79,6 +83,7 @@ const articleHtml = await unified()
   .toc-title {
     margin: 0;
     font-size: 1.2rem;
+    border: 0;
   }
   .toc {
     ol {
@@ -135,6 +140,15 @@ const articleHtml = await unified()
   }
   h1 {
     font-size: 2rem;
+  }
+  h2 {
+    border-inline-start: 7px solid var(--theme-color);
+    padding-inline-start: 11px;
+    padding-block: 0.1rem;
+    border-block-end: 1px solid var(--border-color);
+  }
+  h3 {
+    border-block-end: 1px solid var(--border-color);
   }
   table,
   th,
