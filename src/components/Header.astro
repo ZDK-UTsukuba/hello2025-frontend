@@ -1,54 +1,83 @@
+---
+import { Image } from "astro:assets";
+import Icon from "../../public/YN-icon.png";
+---
+
 <header class="header">
   <a class="top-link" href="/">
-    <div class="title">
-      新入生情報<span class="web">Web</span><span class="year">2025</span>
+    <div class="title-container">
+      <div>
+        <div class="title">
+          新入生情報<span class="web">Web</span><span class="year">2025</span>
+        </div>
+        <span class="sub-title"
+          >つくばで大学生活を始める<span class="you">あなたに</span></span
+        >
+      </div>
+      <Image class="icon" src={Icon} alt="" />
     </div>
-    <span class="sub-title"
-      >つくばで大学生活を始める<span class="you">あなたに</span></span
-    >
   </a>
-</header>
 
-<style>
-  .top-link {
-    display: inline-block;
-    text-decoration: none;
-    color: inherit;
-  }
-  .title {
-    font-weight: bold;
-    margin: 0;
-    margin-block-start: 2rem;
-    font-size: 2.5rem;
-    line-height: 2.3rem;
-    .web {
-      margin-inline: 0.2rem;
-      font-size: 2.8rem;
+  <style>
+    .top-link {
+      display: inline-block;
+      margin-block-start: 2rem;
+      text-decoration: none;
+      color: inherit;
     }
-    .year {
-      margin-inline-start: 0rem;
-      font-size: 2.8rem;
+    .title-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-inline: auto;
+      max-width: 1000px;
     }
-  }
-  .sub-title {
-    letter-spacing: 0.12rem;
-    font-size: 1.5rem;
-    font-weight: 600;
-    .you {
-      color: var(--theme-color);
-    }
-  }
-  @media screen and (max-width: 768px) {
-    .header {
-      text-align: center;
-    }
-    .title,
-    .title .web,
-    .title .year {
-      font-size: 2rem;
+    .title {
+      font-weight: bold;
+      margin: 0;
+      font-size: 2.5rem;
+      line-height: 2.3rem;
+      .web {
+        margin-inline: 0.2rem;
+        font-size: 2.8rem;
+      }
+      .year {
+        margin-inline-start: 0rem;
+        font-size: 2.8rem;
+      }
     }
     .sub-title {
-      font-size: 1.12rem;
+      letter-spacing: 0.12rem;
+      font-size: 1.5rem;
+      font-weight: 600;
+      .you {
+        color: var(--theme-color);
+      }
     }
-  }
-</style>
+    .icon {
+      height: 5rem;
+      width: 5rem;
+    }
+    @media screen and (max-width: 768px) {
+      .header {
+        text-align: center;
+      }
+      .title-container {
+        gap: 0.5rem;
+      }
+      .title,
+      .title .web,
+      .title .year {
+        font-size: 6.8vw;
+      }
+      .sub-title {
+        font-size: 3.5vw;
+      }
+      .icon {
+        height: 12vw;
+        width: 12vw;
+      }
+    }
+  </style>
+</header>
