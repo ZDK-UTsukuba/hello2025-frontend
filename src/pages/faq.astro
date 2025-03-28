@@ -63,14 +63,6 @@ const ids = hashes.map((h) => h.slice(0, hashLength));
 </Layout>
 
 <style>
-  .question {
-    font-size: 1.3rem;
-    font-weight: bold;
-  }
-  .question::before {
-    content: "Q. ";
-  }
-
   .toc-nav {
     padding: 16px;
     border: solid 1px var(--border-color);
@@ -83,13 +75,12 @@ const ids = hashes.map((h) => h.slice(0, hashLength));
   }
   .toc {
     ol {
-      padding-inline-start: 0;
+      padding-inline-start: 24px;
     }
     ol ol {
       padding-inline-start: 16px;
     }
     li {
-      list-style-type: none;
       color: var(--link-color);
       font-weight: 700;
     }
@@ -109,6 +100,7 @@ const ids = hashes.map((h) => h.slice(0, hashLength));
     padding: 16px;
     width: 620px;
     margin: 8px auto;
+    counter-reset: number 0;
   }
   .faq-item {
     padding: 0.5em 1em;
@@ -116,6 +108,14 @@ const ids = hashes.map((h) => h.slice(0, hashLength));
     background: #fff;
     border: solid 3px #60d398; /*線*/
     border-radius: 10px; /*角の丸み*/
+  }
+  .question {
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
+  .question::before {
+    counter-increment: number 1;
+    content: "Q" counter(number) ".";
   }
   @media screen and (max-width: 768px) {
     .faq-item {
