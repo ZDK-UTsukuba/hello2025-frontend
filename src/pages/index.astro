@@ -20,11 +20,6 @@ const blogPosts = posts.filter((post) => post.number !== faqPost.number);
 <Layout>
   <div class="container">
     <Header />
-    <div class="description">
-      <p class="paragraph">
-        新入生情報Webは、筑波大学に入学する新入生向けの情報ポータルです。全代会が運営しています。
-      </p>
-    </div>
     <div class="card-container">
       <h2>記事一覧</h2>
       {blogPosts.map((post) => <ArticleCard post={post} />)}
@@ -35,14 +30,6 @@ const blogPosts = posts.filter((post) => post.number !== faqPost.number);
   <Footer showTopLink={false} />
 </Layout>
 <style>
-  .description {
-    padding: 8px;
-  }
-  .paragraph::before {
-    display: inline-block;
-    content: "";
-    width: 0.8rem;
-  }
   .card-container {
     display: flex;
     flex-direction: column;
