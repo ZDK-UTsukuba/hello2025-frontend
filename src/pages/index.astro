@@ -7,6 +7,7 @@ import { getFirstImg } from "../esa-utils/thumbnail";
 import { fetchPost } from "../esa-utils/fetch";
 import backgroundImage from "../assets/background.svg";
 import Card from "../components/Card.astro";
+import Header from "../components/Header.astro";
 
 const response = await fetchPosts();
 const posts = response.posts;
@@ -18,11 +19,7 @@ const blogPosts = posts.filter((post) => post.number !== faqPost.number);
 
 <Layout>
   <div class="container">
-    <h1>
-      <span class="title-span">春からつくばで</span>
-      <span class="title-span">新生活を始める</span>
-      <span class="title-span">あなたに2025</span>
-    </h1>
+    <Header />
     <div class="card-container">
       <h2>記事一覧</h2>
       {blogPosts.map((post) => <ArticleCard post={post} />)}
@@ -33,13 +30,6 @@ const blogPosts = posts.filter((post) => post.number !== faqPost.number);
   <Footer showTopLink={false} />
 </Layout>
 <style>
-  h1 {
-    width: 80%;
-    margin: 0 auto;
-  }
-  .title-span {
-    display: inline-block;
-  }
   .card-container {
     display: flex;
     flex-direction: column;
@@ -54,9 +44,6 @@ const blogPosts = posts.filter((post) => post.number !== faqPost.number);
     .container {
       width: 95%;
       margin-top: 8px;
-    }
-    h1 {
-      width: 100%;
     }
   }
 </style>

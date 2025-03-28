@@ -9,6 +9,7 @@ import { fetchPosts } from "../../esa-utils/fetch";
 import Layout from "../../layouts/Layout.astro";
 import Footer from "../../components/footer.astro";
 import { imageReplacer } from "../../esa-utils/image-replacer";
+import Header from "../../components/Header.astro";
 
 /**
  * 動的にページを生成するときに必須の関数
@@ -40,6 +41,7 @@ const articleHtml = await unified()
 
 <Layout pageTitle={post.name}>
   <div class="container">
+    <Header />
     <h1 class="title">{post.name}</h1>
     <nav class="toc-nav">
       <h2 class="toc-title">目次</h2>
