@@ -6,6 +6,7 @@ import { fetchPost } from "../esa-utils/fetch";
 import { parseFaqs } from "../esa-utils/faq-parser";
 import Layout from "../layouts/Layout.astro";
 import Footer from "../components/footer.astro";
+import Header from "../components/Header.astro";
 
 const faqPost = await fetchPost(import.meta.env.ESA_FAQ_NUMBER);
 const faqNodes = unified().use(remarkParse).parse(faqPost.body_md);
@@ -27,6 +28,7 @@ const ids = hashes.map((h) => h.slice(0, hashLength));
 
 <Layout pageTitle="よくある質問">
   <div class="container">
+    <Header />
     <h1>よくある質問</h1>
     <nav class="toc-nav">
       <h2 class="toc-title">目次</h2>
