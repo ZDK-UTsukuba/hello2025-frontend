@@ -7,6 +7,7 @@ import { getFirstImg } from "../esa-utils/thumbnail";
 import { fetchPost } from "../esa-utils/fetch";
 import backgroundImage from "../assets/background.svg";
 import Card from "../components/Card.astro";
+import Header from "../components/Header.astro";
 
 const response = await fetchPosts();
 const posts = response.posts;
@@ -18,14 +19,7 @@ const blogPosts = posts.filter((post) => post.number !== faqPost.number);
 
 <Layout>
   <div class="container">
-    <header class="header">
-      <h1 class="title">
-        新入生情報<span class="web">Web</span><span class="year">2025</span>
-      </h1>
-      <span class="sub-title"
-        >つくばで大学生活を始める<span class="you">あなたに</span></span
-      >
-    </header>
+    <Header />
     <div class="description">
       <p class="paragraph">
         新入生情報Webは、筑波大学に入学する新入生向けの情報ポータルです。全代会が運営しています。
@@ -41,28 +35,6 @@ const blogPosts = posts.filter((post) => post.number !== faqPost.number);
   <Footer showTopLink={false} />
 </Layout>
 <style>
-  .title {
-    margin: 0;
-    margin-block-start: 2rem;
-    font-size: 2.5rem;
-    line-height: 2.3rem;
-    .web {
-      margin-inline: 0.2rem;
-      font-size: 2.8rem;
-    }
-    .year {
-      margin-inline-start: 0rem;
-      font-size: 2.8rem;
-    }
-  }
-  .sub-title {
-    letter-spacing: 0.12rem;
-    font-size: 1.5rem;
-    font-weight: 600;
-    .you {
-      color: #0e9c26;
-    }
-  }
   .description {
     padding: 8px;
   }
@@ -85,17 +57,6 @@ const blogPosts = posts.filter((post) => post.number !== faqPost.number);
     .container {
       width: 95%;
       margin-top: 8px;
-    }
-    .header {
-      text-align: center;
-    }
-    .title,
-    .title .web,
-    .title .year {
-      font-size: 2rem;
-    }
-    .sub-title {
-      font-size: 1.12rem;
     }
   }
 </style>
