@@ -21,15 +21,22 @@ const blogPosts = posts.filter((post) => post.number !== faqPost.number);
   <div class="container">
     <Header />
     <div class="card-container">
-      <h2>記事一覧</h2>
+      <h2 class="heading">記事一覧</h2>
       {blogPosts.map((post) => <ArticleCard post={post} />)}
-      <h2>これってどうなの？そんなあなたに</h2>
+      <h2 class="heading">これってどうなの？</h2>
       <Card href="/faq" title="よくある質問" imgSrc={faqImgSrc} />
     </div>
   </div>
   <Footer showTopLink={false} />
 </Layout>
 <style>
+  .heading {
+    font-size: 1.5rem;
+    padding-inline: 11px;
+    padding-block: 0.1rem;
+    border-inline-start: 7px solid var(--theme-color-dark);
+    border-block-end: 1px solid var(--border-color);
+  }
   .card-container {
     display: flex;
     flex-direction: column;
