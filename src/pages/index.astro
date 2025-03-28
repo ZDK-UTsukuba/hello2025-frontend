@@ -18,7 +18,7 @@ const blogPosts = posts.filter((post) => post.number !== faqPost.number);
 
 <Layout>
   <div class="container">
-    <header>
+    <header class="header">
       <h1 class="title">
         新入生情報<span class="web">Web</span><span class="year">2025</span>
       </h1>
@@ -26,6 +26,11 @@ const blogPosts = posts.filter((post) => post.number !== faqPost.number);
         >つくばで大学生活を始める<span class="you">あなたに</span></span
       >
     </header>
+    <div class="description">
+      <p class="paragraph">
+        新入生情報Webは、筑波大学に入学する新入生向けの情報ポータルです。全代会が運営しています。
+      </p>
+    </div>
     <div class="card-container">
       <h2>記事一覧</h2>
       {blogPosts.map((post) => <ArticleCard post={post} />)}
@@ -58,6 +63,14 @@ const blogPosts = posts.filter((post) => post.number !== faqPost.number);
       color: #0e9c26;
     }
   }
+  .description {
+    padding: 8px;
+  }
+  .paragraph::before {
+    display: inline-block;
+    content: "";
+    width: 0.8rem;
+  }
   .card-container {
     display: flex;
     flex-direction: column;
@@ -72,6 +85,9 @@ const blogPosts = posts.filter((post) => post.number !== faqPost.number);
     .container {
       width: 95%;
       margin-top: 8px;
+    }
+    .header {
+      text-align: center;
     }
     .title,
     .title .web,
