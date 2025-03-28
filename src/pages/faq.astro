@@ -1,5 +1,4 @@
 ---
-import * as crypto from "crypto";
 import remarkParse from "remark-parse";
 import { unified } from "unified";
 import { fetchPost } from "../esa-utils/fetch";
@@ -7,23 +6,14 @@ import { parseFaqs } from "../esa-utils/faq-parser";
 import Layout from "../layouts/Layout.astro";
 import Footer from "../components/footer.astro";
 import Header from "../components/Header.astro";
+import { getUniqueHashes } from "../esa-utils/hash";
 
 const faqPost = await fetchPost(import.meta.env.ESA_FAQ_NUMBER);
 const faqNodes = unified().use(remarkParse).parse(faqPost.body_md);
 const faqs = parseFaqs(faqNodes);
 console.dir(faqs);
 
-const hashes = faqs.map((faq) =>
-  crypto.createHash("md5").update(faq.question).digest("hex"),
-);
-let hashLength = 7;
-while (
-  new Set(hashes.map((h) => h.slice(0, hashLength))).size !== hashes.length
-) {
-  hashLength++;
-}
-console.log("assured unique id w/hashLength: ", hashLength);
-const ids = hashes.map((h) => h.slice(0, hashLength));
+const ids = getUniqueHashes(faqs.map((faq) => faq.question));
 ---
 
 <Layout pageTitle="よくある質問">
