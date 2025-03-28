@@ -29,7 +29,7 @@ const ids = hashes.map((h) => h.slice(0, hashLength));
 <Layout pageTitle="よくある質問">
   <div class="container">
     <Header />
-    <h1>よくある質問</h1>
+    <h1 class="title">よくある質問</h1>
     <nav class="toc-nav">
       <h2 class="toc-title">目次</h2>
       <div class="toc"></div>
@@ -65,6 +65,12 @@ const ids = hashes.map((h) => h.slice(0, hashLength));
 </Layout>
 
 <style>
+  .title {
+    font-size: 2rem;
+    padding-inline: 16px;
+    border-inline-start: 11px solid var(--theme-color-dark);
+    border-block-end: 1px solid var(--border-color);
+  }
   .toc-nav {
     padding: 16px;
     border: solid 1px var(--border-color);
