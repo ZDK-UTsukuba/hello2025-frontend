@@ -42,13 +42,15 @@ const articleHtml = await unified()
 <Layout pageTitle={post.name}>
   <div class="container">
     <Header />
-    <h1 class="title">{post.name}</h1>
-    <nav class="toc-nav">
-      <h2 class="toc-title">目次</h2>
-      <div class="toc"></div>
-    </nav>
+    <div class="article-container">
+      <h1 class="title">{post.name}</h1>
+      <nav class="toc-nav">
+        <h2 class="toc-title">目次</h2>
+        <div class="toc"></div>
+      </nav>
 
-    <article set:html={articleHtml.toString()} />
+      <article set:html={articleHtml.toString()} />
+    </div>
   </div>
 
   <script>
@@ -112,8 +114,10 @@ const articleHtml = await unified()
   .container {
     width: 620px;
     margin: 8px auto;
-    padding: 16px;
     overflow-wrap: break-word;
+  }
+  .article-container {
+    padding: 16px;
   }
   @media screen and (max-width: 768px) {
     .container {
@@ -134,9 +138,6 @@ const articleHtml = await unified()
     max-height: 30rem;
     display: block;
     margin: 8px 0;
-  }
-  article {
-    margin: 8px;
   }
   h1 {
     font-size: 2rem;
