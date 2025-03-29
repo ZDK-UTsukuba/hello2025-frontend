@@ -23,7 +23,7 @@ const ids = getUniqueHashes(faqs.map((faq) => faq.question));
     <Header />
     <div class="article-container">
       <h1 class="title">よくある質問</h1>
-      <Toc />
+      <Toc showNumbers={true} />
       <article>
         {
           faqs.map((faq, i) => (

@@ -1,6 +1,13 @@
+---
+export interface Props {
+  showNumbers?: boolean;
+}
+const { showNumbers = false } = Astro.props;
+---
+
 <nav class="toc-nav">
   <h2 class="toc-title">目次</h2>
-  <div class="toc"></div>
+  <div class:list={["toc", { number: showNumbers }]}></div>
 </nav>
 
 <script>
@@ -30,12 +37,13 @@
   }
   .toc {
     ol {
-      padding-inline-start: 24px;
+      padding-inline-start: 8px;
     }
     ol ol {
       padding-inline-start: 16px;
     }
     li {
+      list-style: none;
       color: var(--link-color);
       font-weight: 700;
     }
@@ -49,6 +57,14 @@
     }
     a:hover {
       color: var(--text-color);
+    }
+  }
+  .toc.number {
+    ol {
+      padding-inline-start: 32px;
+    }
+    li {
+      list-style: decimal;
     }
   }
 </style>
