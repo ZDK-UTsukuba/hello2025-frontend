@@ -3,6 +3,7 @@ export interface Props {
   showTopLink: boolean;
 }
 const { showTopLink } = Astro.props;
+import ZDK_logo from "../assets/zdk_logo_full.svg";
 ---
 
 <footer>
@@ -30,10 +31,7 @@ const { showTopLink } = Astro.props;
   </div>
   <div class="footer__logo-container">
     <a href="https://www.zdk.tsukuba.ac.jp/" class="footer__logo-link">
-      <img
-        src="/src/assets/zdk_logo_full.svg"
-        alt="全学学類・専門学群・総合学域群代表者会議"
-      />
+      <img src={ZDK_logo.src} alt="全学学類・専門学群・総合学域群代表者会議" />
     </a>
   </div>
 </footer>
