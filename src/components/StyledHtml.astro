@@ -35,16 +35,17 @@ const { html } = Astro.props;
     }
     th,
     td {
-      border-inline-start: 1px solid var(--border-color);
-      border-block-start: 1px solid var(--border-color);
+      border-inline-start: 1px solid var(--border-color-dark);
+      border-block-start: 1px solid var(--border-color-dark);
+      padding: 4px;
     }
     th:last-of-type,
     td:last-of-type {
-      border-inline-end: 1px solid var(--border-color);
+      border-inline-end: 1px solid var(--border-color-dark);
     }
     tr:last-of-type {
       td {
-        border-block-end: 1px solid var(--border-color);
+        border-block-end: 1px solid var(--border-color-dark);
       }
     }
     a {
