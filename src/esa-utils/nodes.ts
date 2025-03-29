@@ -21,7 +21,12 @@ export function isImg(node: Node | undefined): node is ImgNode {
   return true;
 }
 
-export function isDetails(node: Node | undefined): node is ImgNode {
+export interface DetailsNode extends Node {
+  type: "raw";
+  value: string;
+}
+
+export function isDetailsStart(node: Node | undefined): node is DetailsNode {
   if (node === undefined) {
     return false;
   }
@@ -31,6 +36,21 @@ export function isDetails(node: Node | undefined): node is ImgNode {
     return false;
   }
   if (!node.value.includes("<details>")) {
+    return false;
+  }
+  return true;
+}
+
+export function isDetailsEnd(node: Node | undefined): node is DetailsNode {
+  if (node === undefined) {
+    return false;
+  }
+  if (
+    !(node.type === "raw" && "value" in node && typeof node.value === "string")
+  ) {
+    return false;
+  }
+  if (!node.value.includes("</details>")) {
     return false;
   }
   return true;
