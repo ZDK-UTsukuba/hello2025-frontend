@@ -20,3 +20,18 @@ export function isImg(node: Node | undefined): node is ImgNode {
   }
   return true;
 }
+
+export function isDetails(node: Node | undefined): node is ImgNode {
+  if (node === undefined) {
+    return false;
+  }
+  if (
+    !(node.type === "raw" && "value" in node && typeof node.value === "string")
+  ) {
+    return false;
+  }
+  if (!node.value.includes("<details>")) {
+    return false;
+  }
+  return true;
+}
