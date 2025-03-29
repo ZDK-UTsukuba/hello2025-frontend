@@ -1,5 +1,5 @@
 <footer class="footer">
-  <div class="md-flex md-justify-between">
+  <div class="footer__navi-container">
     <div>
       <p class="footer__navi-heading">サイト内マップ</p>
       <ul class="footer__navi">
@@ -21,10 +21,9 @@
           <a href="https://www.stb.tsukuba.ac.jp/~shinkan/">新入生歓迎委員会</a>
         </li>
       </ul>
+      <hr />
     </div>
   </div>
-
-  <hr />
 
   <div class="footer__logo-container">
     <a href="https://www.zdk.tsukuba.ac.jp/" class="footer__logo-link">
@@ -57,20 +56,15 @@
     margin: 1rem 0;
   }
 
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-  }
-
   .footer {
     margin: 1rem 0;
     font-size: 15px;
     color: #4b5564;
     background: #fff;
   }
-
+  .footer__navi-container {
+    margin: 0 2rem;
+  }
   .footer__navi {
     margin: 0;
     padding: 0;
