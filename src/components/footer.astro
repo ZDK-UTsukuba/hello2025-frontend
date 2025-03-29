@@ -28,6 +28,14 @@ const { showTopLink } = Astro.props;
     >
     <a href="https://www.stb.tsukuba.ac.jp/~zdk/ipc">情報処理推進特別委員会</a>
   </div>
+  <div class="footer__logo-container">
+    <a href="https://www.zdk.tsukuba.ac.jp/" class="footer__logo-link">
+      <img
+        src="/src/assets/zdk_logo_full.svg"
+        alt="全学学類・専門学群・総合学域群代表者会議"
+      />
+    </a>
+  </div>
 </footer>
 
 <style>
@@ -45,5 +53,22 @@ const { showTopLink } = Astro.props;
   div.link {
     font-size: 150%;
     padding-top: 60px;
+  }
+
+  .footer__logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+  }
+  .footer__logo-link {
+    display: inline-block;
+    max-width: 200px;
+    width: 100%;
+  }
+  .footer__logo-link img {
+    width: 100%;
+    height: auto;
+    display: block;
   }
 </style>
