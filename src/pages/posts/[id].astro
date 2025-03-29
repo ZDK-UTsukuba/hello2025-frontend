@@ -10,6 +10,7 @@ import Layout from "../../layouts/Layout.astro";
 import Footer from "../../components/footer.astro";
 import { imageReplacer } from "../../esa-utils/image-replacer";
 import Header from "../../components/Header.astro";
+import StyledHtml from "../../components/StyledHtml.astro";
 
 /**
  * 動的にページを生成するときに必須の関数
@@ -49,7 +50,9 @@ const articleHtml = await unified()
         <div class="toc"></div>
       </nav>
 
-      <article set:html={articleHtml.toString()} />
+      <article>
+        <StyledHtml html={articleHtml.toString()} />
+      </article>
     </div>
     <Footer />
   </div>
@@ -128,47 +131,6 @@ const articleHtml = await unified()
     }
     .container {
       width: 100%;
-    }
-  }
-</style>
-
-<style is:inline>
-  img {
-    max-width: 100%;
-    max-height: 30rem;
-    display: block;
-    margin: 8px 0;
-  }
-  h1 {
-    font-size: 2rem;
-  }
-  h2 {
-    border-inline-start: 7px solid var(--theme-color);
-    padding-inline-start: 11px;
-    padding-block: 0.1rem;
-    border-block-end: 1px solid var(--border-color);
-  }
-  h3 {
-    border-block-end: 1px solid var(--border-color);
-  }
-  table,
-  th,
-  td {
-    margin: 0;
-    border-spacing: 0;
-  }
-  th,
-  td {
-    border-inline-start: 1px solid var(--border-color);
-    border-block-start: 1px solid var(--border-color);
-  }
-  th:last-of-type,
-  td:last-of-type {
-    border-inline-end: 1px solid var(--border-color);
-  }
-  tr:last-of-type {
-    td {
-      border-block-end: 1px solid var(--border-color);
     }
   }
 </style>

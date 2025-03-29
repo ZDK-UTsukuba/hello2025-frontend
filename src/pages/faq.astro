@@ -7,6 +7,7 @@ import Layout from "../layouts/Layout.astro";
 import Footer from "../components/footer.astro";
 import Header from "../components/Header.astro";
 import { getUniqueHashes } from "../esa-utils/hash";
+import StyledHtml from "../components/StyledHtml.astro";
 
 const faqPost = await fetchPost(import.meta.env.ESA_FAQ_NUMBER);
 const faqNodes = unified().use(remarkParse).parse(faqPost.body_md);
@@ -32,7 +33,7 @@ const ids = getUniqueHashes(faqs.map((faq) => faq.question));
               <h2 class="question" id={ids[i]}>
                 {faq.question}
               </h2>
-              <div set:html={faq.answerHtml} />
+              <StyledHtml html={faq.answerHtml} />
             </div>
           ))
         }
@@ -121,9 +122,6 @@ const ids = getUniqueHashes(faqs.map((faq) => faq.question));
   @media screen and (max-width: 768px) {
     .faq-item {
       width: 100%;
-    }
-    dd {
-      margin-left: 8px;
     }
     .container {
       width: 100%;
