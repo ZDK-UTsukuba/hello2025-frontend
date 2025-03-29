@@ -1,1 +1,1 @@
-export const SITE_TITLE = "春からつくばで新生活を始めるあなたに2025";
+export const SITE_TITLE = "新入生情報Web2025";
