@@ -1,49 +1,39 @@
 <footer class="footer">
   <div class="md-flex md-justify-between">
-    <a href="https://jajaaan.co.jp/" class="footer__logo">
+    <div>
+      <p class="footer__navi-heading">サイト内マップ</p>
+      <ul class="footer__navi">
+        <li><a href="/">トップページ</a></li>
+        <li><a href="/faq">よくある質問</a></li>
+        <li>
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLScv0E7IiT1cbdD2fK4IEyI6RojRcYUkWKZBFHSUciCsScn-fQ/viewform"
+            >質問フォーム(Google Forms)</a
+          >
+        </li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer__navi-heading">関連サイト</p>
+      <ul class="footer__navi">
+        <li><a href="https://shinkan-web.zdk.tsukuba.ac.jp/">新歓Web</a></li>
+        <li>
+          <a href="https://www.stb.tsukuba.ac.jp/~shinkan/">新入生歓迎委員会</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="footer__logo-container">
+    <a href="https://www.zdk.tsukuba.ac.jp/" class="footer__logo-link">
       <img
-        src="/public/zdk_logo_full.svg"
-        height="10%"
+        src="/src/assets/zdk_logo_full.svg"
         alt="全学学類・専門学群・総合学域群代表者会議"
       />
     </a>
-    <div class="grid">
-      <div>
-        <p class="footer__navi-heading">サイト内マップ</p>
-        <ul class="footer__navi">
-          <li><a href="/">トップページ</a></li>
-          <li><a href="/faq">よくある質問</a></li>
-          <li>
-            <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLScv0E7IiT1cbdD2fK4IEyI6RojRcYUkWKZBFHSUciCsScn-fQ/viewform"
-              >質問フォーム(Google Forms)</a
-            >
-          </li>
-        </ul>
-      </div>
-      <div>
-        <p class="footer__navi-heading">関連サイト</p>
-        <ul class="footer__navi">
-          <li><a href="https://shinkan-web.zdk.tsukuba.ac.jp/">新歓Web</a></li>
-          <li>
-            <a href="https://www.stb.tsukuba.ac.jp/~shinkan/"
-              >新入生歓迎委員会</a
-            >
-          </li>
-        </ul>
-      </div>
-    </div>
   </div>
-  <hr />
-  <p class="copyright">
-    © 2025 <a href="https://jajaaan.co.jp/"
-      >全学学類・専門学群・総合学域群代表者会議</a
-    > All Rights Reserved.
-    <br />また、このサイトのソースコードは<a
-      href="https://github.com/ZDK-UTsukuba/hello2025-frontend"
-      class="githublink">こちら</a
-    >にて公開しています。
-  </p>
 </footer>
 
 <style>
@@ -62,9 +52,9 @@
   }
 
   hr {
-    height: 1px;
-    border: 0;
-    border-top: 1px solid #e5e7eb;
+    width: 312px;
+    padding: 0;
+    margin: 1rem 0;
   }
 
   .grid {
@@ -75,40 +65,41 @@
   }
 
   .footer {
-    padding: 2rem;
+    margin: 1rem 0;
     font-size: 15px;
     color: #4b5564;
     background: #fff;
   }
 
+  .footer__navi {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 0;
+  }
+
   .footer__navi-heading {
     font-weight: 600;
+    margin: 0;
   }
 
-  .footer__logo {
+  li {
+    padding-left: 1rem;
+  }
+
+  .footer__logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+  }
+  .footer__logo-link {
     display: inline-block;
-    margin-bottom: 2rem;
+    max-width: 200px;
+    width: 100%;
   }
-
-  .footer__navi li {
-    margin-bottom: 0.75rem;
-  }
-
-  .githublink {
-    color: #0c8a49;
-  }
-
-  @media (min-width: 768px) {
-    .md-flex {
-      display: flex;
-    }
-
-    .md-justify-between {
-      justify-content: space-between;
-    }
-
-    .grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
+  .footer__logo-link img {
+    width: 100%;
+    height: auto;
+    display: block;
   }
 </style>
