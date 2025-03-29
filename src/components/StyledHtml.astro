@@ -75,7 +75,8 @@ const { html } = Astro.props;
       border-block-end: 1px solid var(--border-color);
     }
 
-    details[open]::details-content {
+    /* See src/esa-utils/details-content-marker.ts */
+    .details-content {
       padding: 16px;
     }
   }
