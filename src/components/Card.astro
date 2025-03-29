@@ -32,12 +32,15 @@ const { href, title, imgSrc } = Astro.props;
     margin-inline: 0.8rem;
   }
   .thumbnail {
-    width: 30%;
+    width: 12rem;
+    height: 8rem;
+    object-fit: cover;
     border-radius: 0 8px 8px 0;
   }
   @media screen and (max-width: 768px) {
     .thumbnail {
-      width: 40%;
+      width: 9rem;
+      height: 7rem;
     }
   }
 </style>

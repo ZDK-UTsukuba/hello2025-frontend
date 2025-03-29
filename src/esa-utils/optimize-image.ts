@@ -9,6 +9,8 @@ import { getImage } from "astro:assets";
 export async function optimizeImage(
   url: string,
   low: boolean = false,
+  width?: number,
+  height?: number,
 ): Promise<string> {
   console.log(url);
 
@@ -17,7 +19,10 @@ export async function optimizeImage(
     inferSize: true,
     format: "webp",
     quality: low ? "low" : "mid",
+    width: width,
+    height: height,
   });
+  console.log(img.options);
 
   return img.src;
 }
