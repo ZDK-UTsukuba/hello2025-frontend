@@ -14,10 +14,17 @@ export interface Props {
       creator?: string;
     };
   };
+  jsonld?: {
+    attype?: string;
+    author?: {
+      type?: string;
+      name?: string;
+      url?: string;
+    };
+  };
 }
-import { meta } from "@eslint/js";
 import { SITE_TITLE } from "../consts";
-const { pageTitle, title, description, og } = Astro.props;
+const { pageTitle, title, description, og, jsonld } = Astro.props;
 
 const metadata = {
   title: title ?? (pageTitle ? `${pageTitle} - ${SITE_TITLE}` : SITE_TITLE),
@@ -34,7 +41,26 @@ const metadata = {
       creator: og?.twitter?.creator ?? "@public_zdk",
     },
   },
+  jsonld: {
+    attype: jsonld?.attype ?? "WebSite",
+    author: {
+      attype: jsonld?.author?.type ?? "Organization",
+      name: jsonld?.author?.name ?? "全学学類・専門学群・総合学域群代表者会議",
+      url: jsonld?.author?.url ?? "https://www.zdk.tsukuba.ac.jp",
+    },
+  },
 };
+
+const jsonldStringfy = JSON.stringify({
+  "@type": metadata.jsonld.attype,
+  author: [
+    {
+      "@type": metadata.jsonld.author.attype,
+      name: metadata.jsonld.author.name,
+      url: metadata.jsonld.author.url,
+    },
+  ],
+});
 ---
 
 <!doctype html>
@@ -52,6 +78,7 @@ const metadata = {
     <meta name="twitter:card" content={metadata.og.twitter.card} />
     <meta property="twitter:site" content={metadata.og.twitter.site} />
     <meta property="twitter:creator" content={metadata.og.twitter.creator} />
+    <script type="application/ld+json" set:html={jsonldStringfy} />
   </head>
   <body>
     <slot />

@@ -39,7 +39,7 @@ const articleHtml = await unified()
   .process(post.body_md);
 ---
 
-<Layout pageTitle={post.name}>
+<Layout pageTitle={post.name} jsonld={{ attype: "Article" }}>
   <div class="container">
     <Header />
     <div class="article-container">
