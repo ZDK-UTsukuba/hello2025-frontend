@@ -3,6 +3,15 @@ import ZDK_logo from "../assets/zdk_logo_full.svg";
 ---
 
 <footer class="footer">
+  <div class="link-list">
+    <a class="link" href="/faq">よくある質問</a>
+    <a class="link" href="/">トップへ</a>
+    <a
+      class="link"
+      href="https://docs.google.com/forms/d/e/1FAIpQLScv0E7IiT1cbdD2fK4IEyI6RojRcYUkWKZBFHSUciCsScn-fQ/viewform"
+      >お問い合わせ</a
+    >
+  </div>
   <div class="footer__logo-container">
     <a href="https://www.zdk.tsukuba.ac.jp/" class="footer__logo-link">
       <img src={ZDK_logo.src} alt="全学学類・専門学群・総合学域群代表者会議" />
@@ -16,16 +25,31 @@ import ZDK_logo from "../assets/zdk_logo_full.svg";
     padding-block: 1rem 2rem;
     border-block-start: 1px solid var(--border-color);
   }
+  .link-list {
+    padding-inline: 2rem;
+    display: flex;
+    justify-content: space-between;
+    padding-block-end: 1rem;
+    border-block-end: 1px solid var(--border-color);
+  }
+  .link {
+    color: var(--link-color);
+    text-decoration: none;
+  }
+  .link:hover {
+    color: var(--text-color);
+    text-decoration: underline;
+  }
   .footer__logo-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 1rem;
+    margin-top: 2rem;
   }
   .footer__logo-link {
     display: inline-block;
     max-width: 200px;
-    width: 100%;
+    width: 50%;
   }
   .footer__logo-link img {
     width: 100%;
