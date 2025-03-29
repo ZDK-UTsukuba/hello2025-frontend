@@ -1,7 +1,7 @@
 import { visit } from "unist-util-visit";
 import { optimizeImage } from "./optimize-image";
 import type { Node } from "hast";
-import { isImg, type ImgNode } from "./img-node";
+import { isImg, type ImgNode } from "./nodes";
 
 export function imageReplacer() {
   const imageNodes: ImgNode[] = [];
