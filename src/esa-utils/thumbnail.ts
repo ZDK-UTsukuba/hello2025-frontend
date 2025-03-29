@@ -9,7 +9,7 @@ export function getFirstImg(post: Post): Promise<string> | undefined {
   const hast = unified().use(rehypeParse).parse(post.body_html);
   const imgNode = find(hast, { type: "element", tagName: "img" });
   if (isImg(imgNode)) {
-    return optimizeImage(imgNode.properties.src, true, 400, 280);
+    return optimizeImage(imgNode.properties.src, true, 400);
   } else {
     return undefined;
   }
