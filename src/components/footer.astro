@@ -1,33 +1,16 @@
 ---
-export interface Props {
-  showTopLink: boolean;
-}
-const { showTopLink } = Astro.props;
 import ZDK_logo from "../assets/zdk_logo_full.svg";
 ---
 
-<footer>
-  <div class="link">
-    <a href="https://shinkan-web.zdk.tsukuba.ac.jp/">新歓Web</a>
+<footer class="footer">
+  <div class="link-list">
+    <a class="link" href="/faq">よくある質問</a>
+    <a class="link" href="/">トップへ</a>
     <a
+      class="link"
       href="https://docs.google.com/forms/d/e/1FAIpQLScv0E7IiT1cbdD2fK4IEyI6RojRcYUkWKZBFHSUciCsScn-fQ/viewform"
       >お問い合わせ</a
     >
-    <a href="https://github.com/ZDK-UTsukuba/hello2025-frontend">ソースコード</a
-    >
-    {showTopLink && <a href="/">トップページ</a>}
-  </div>
-  <div>
-    <a href="https://www.stb.tsukuba.ac.jp/~zdk/"
-      >© 全学学類・専門学群・総合学域群代表者会議 2024</a
-    >
-    <a href="https://www.stb.tsukuba.ac.jp/~zdk/shintoku"
-      >新入生歓迎特別委員会</a
-    >
-    <a href="https://www.stb.tsukuba.ac.jp/~zdk/campus-life-environment"
-      >生活環境委員会</a
-    >
-    <a href="https://www.stb.tsukuba.ac.jp/~zdk/ipc">情報処理推進特別委員会</a>
   </div>
   <div class="footer__logo-container">
     <a href="https://www.zdk.tsukuba.ac.jp/" class="footer__logo-link">
@@ -37,32 +20,35 @@ import ZDK_logo from "../assets/zdk_logo_full.svg";
 </footer>
 
 <style>
-  a {
-    margin-left: 8px;
-    margin-right: 8px;
+  .footer {
+    margin-block-start: 2rem;
+    border-block-start: 1px solid var(--border-color);
   }
-  div {
+  .link-list {
+    padding-inline: 1rem;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding-bottom: 30px;
-    font-size: 80%;
+    justify-content: space-between;
+    border-block-end: 1px solid var(--border-color);
   }
-  div.link {
-    font-size: 150%;
-    padding-top: 60px;
+  .link {
+    line-height: 3.5rem;
+    color: var(--link-color);
+    text-decoration: none;
   }
-
+  .link:hover {
+    color: var(--text-color);
+    text-decoration: underline;
+  }
   .footer__logo-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 1rem;
+    margin-top: 2rem;
   }
   .footer__logo-link {
     display: inline-block;
     max-width: 200px;
-    width: 100%;
+    width: 50%;
   }
   .footer__logo-link img {
     width: 100%;

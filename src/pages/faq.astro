@@ -37,6 +37,7 @@ const ids = getUniqueHashes(faqs.map((faq) => faq.question));
           ))
         }
       </article>
+      <Footer />
     </div>
   </div>
 
@@ -52,8 +53,6 @@ const ids = getUniqueHashes(faqs.map((faq) => faq.question));
       headingSelector: "h2, h3", // 目次として取得する見出しタグ
     });
   </script>
-
-  <Footer showTopLink={true} />
 </Layout>
 
 <style>

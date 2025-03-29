@@ -50,6 +50,7 @@ const articleHtml = await unified()
       </nav>
 
       <article set:html={articleHtml.toString()} />
+      <Footer />
     </div>
   </div>
 
@@ -65,7 +66,6 @@ const articleHtml = await unified()
       headingSelector: "h2, h3", // 目次として取得する見出しタグ
     });
   </script>
-  <Footer showTopLink={true} />
 </Layout>
 
 <style>
