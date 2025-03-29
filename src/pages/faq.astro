@@ -6,7 +6,9 @@ import { parseFaqs } from "../esa-utils/faq-parser";
 import Layout from "../layouts/Layout.astro";
 import Footer from "../components/footer.astro";
 import Header from "../components/Header.astro";
+import Toc from "../components/Toc.astro";
 import { getUniqueHashes } from "../esa-utils/hash";
+import StyledHtml from "../components/StyledHtml.astro";
 
 const faqPost = await fetchPost(import.meta.env.ESA_FAQ_NUMBER);
 const faqNodes = unified().use(remarkParse).parse(faqPost.body_md);
@@ -21,10 +23,7 @@ const ids = getUniqueHashes(faqs.map((faq) => faq.question));
     <Header />
     <div class="article-container">
       <h1 class="title">よくある質問</h1>
-      <nav class="toc-nav">
-        <h2 class="toc-title">目次</h2>
-        <div class="toc"></div>
-      </nav>
+      <Toc />
       <article>
         {
           faqs.map((faq, i) => (
@@ -32,7 +31,7 @@ const ids = getUniqueHashes(faqs.map((faq) => faq.question));
               <h2 class="question" id={ids[i]}>
                 {faq.question}
               </h2>
-              <div set:html={faq.answerHtml} />
+              <StyledHtml html={faq.answerHtml} />
             </div>
           ))
         }
@@ -40,19 +39,6 @@ const ids = getUniqueHashes(faqs.map((faq) => faq.question));
     </div>
     <Footer />
   </div>
-
-  <script>
-    import * as tocbot from "tocbot";
-
-    tocbot.init({
-      tocSelector: ".toc", // 目次を追加するクラス名
-      contentSelector: "article", // 目次を取得するコンテンツ
-      activeLinkClass: "to-link-active", // アクティブになった時のクラス名
-      listClass: "toc-list", // olのクラス名
-      linkClass: "toc-link", // aタグのクラス名
-      headingSelector: "h2, h3", // 目次として取得する見出しタグ
-    });
-  </script>
 </Layout>
 
 <style>
@@ -61,39 +47,6 @@ const ids = getUniqueHashes(faqs.map((faq) => faq.question));
     padding-inline: 16px;
     border-inline-start: 11px solid var(--theme-color-dark);
     border-block-end: 1px solid var(--border-color);
-  }
-  .toc-nav {
-    padding: 16px;
-    border: solid 1px var(--border-color);
-    border-radius: 8px;
-    width: fit-content;
-  }
-  .toc-title {
-    margin: 0;
-    font-size: 1.2rem;
-  }
-  .toc {
-    ol {
-      padding-inline-start: 24px;
-    }
-    ol ol {
-      padding-inline-start: 16px;
-    }
-    li {
-      color: var(--link-color);
-      font-weight: 700;
-    }
-    ol ol > li {
-      font-weight: normal;
-    }
-    a {
-      font-size: 1rem;
-      color: var(--link-color);
-      text-decoration: none;
-    }
-    a:hover {
-      color: var(--text-color);
-    }
   }
   .container {
     width: 620px;
@@ -121,9 +74,6 @@ const ids = getUniqueHashes(faqs.map((faq) => faq.question));
   @media screen and (max-width: 768px) {
     .faq-item {
       width: 100%;
-    }
-    dd {
-      margin-left: 8px;
     }
     .container {
       width: 100%;
