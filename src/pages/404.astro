@@ -1,0 +1,26 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout pageTitle="404 お探しのページが見つかりません">
+  <div class="container-404">
+    <h2 class="not-found">404</h2>
+    <div class="description">お探しのページが見つかりません</div>
+  </div>
+</Layout>
+
+<style>
+  .container-404 {
+    margin: 5rem auto;
+  }
+  .not-found {
+    font-size: 3.2rem;
+    text-align: center;
+    margin-block: 0;
+    color: var(--theme-color-dark);
+  }
+  .description {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+</style>
