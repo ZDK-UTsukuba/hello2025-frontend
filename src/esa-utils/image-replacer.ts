@@ -15,7 +15,9 @@ export function imageReplacer() {
     await Promise.all(
       imageNodes.map(async (node) => {
         const filepath = await optimizeImage(node.properties.src);
-        node.properties.src = filepath;
+        node.properties.src = filepath.src;
+        node.properties.width = filepath.attributes.width;
+        node.properties.height = filepath.attributes.height;
       }),
     );
   };

@@ -11,7 +11,7 @@ const response = await fetchPosts();
 const posts = response.posts;
 const faqPost = await fetchPost(import.meta.env.ESA_FAQ_NUMBER);
 const faqFirstImg = await getFirstImg(faqPost);
-const faqImgSrc = faqFirstImg ?? backgroundImage.src;
+const faqImg = faqFirstImg ?? backgroundImage;
 const blogPosts = posts.filter((post) => post.number !== faqPost.number);
 ---
 
@@ -20,9 +20,10 @@ const blogPosts = posts.filter((post) => post.number !== faqPost.number);
     <h2 class="heading">記事一覧</h2>
     {blogPosts.map((post) => <ArticleCard post={post} />)}
     <h2 class="heading">これってどうなの？</h2>
-    <Card href="/faq" title="よくある質問" imgSrc={faqImgSrc} />
+    <Card href="/faq" title="よくある質問" imgSrc={faqImg.src} />
   </div>
 </Layout>
+
 <style>
   .heading {
     font-size: 1.5rem;

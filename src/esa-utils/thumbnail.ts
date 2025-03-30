@@ -4,8 +4,9 @@ import rehypeParse from "rehype-parse";
 import { find } from "unist-util-find";
 import { optimizeImage } from "./optimize-image";
 import { isImg } from "./nodes";
+import type { GetImageResult } from "astro";
 
-export function getFirstImg(post: Post): Promise<string> | undefined {
+export function getFirstImg(post: Post): Promise<GetImageResult> | undefined {
   const hast = unified().use(rehypeParse).parse(post.body_html);
   const imgNode = find(hast, { type: "element", tagName: "img" });
   if (isImg(imgNode)) {

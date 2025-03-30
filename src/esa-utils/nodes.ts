@@ -5,6 +5,8 @@ export interface ImgNode extends Node {
   tagName: "img";
   properties: {
     src: string;
+    width?: number;
+    height?: number;
   };
 }
 

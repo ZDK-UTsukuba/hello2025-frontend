@@ -1,3 +1,4 @@
+import type { GetImageResult } from "astro";
 import { getImage } from "astro:assets";
 
 /**
@@ -13,7 +14,7 @@ export async function optimizeImage(
   low: boolean = false,
   width?: number,
   height?: number,
-): Promise<string> {
+): Promise<GetImageResult> {
   console.log(url);
 
   const img = await getImage({
@@ -25,5 +26,5 @@ export async function optimizeImage(
     height: height,
   });
 
-  return img.src;
+  return img;
 }
