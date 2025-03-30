@@ -9,9 +9,9 @@ export interface Props {
 }
 const { post } = Astro.props;
 const firstImg = await getFirstImg(post);
-const imgSrc = firstImg ?? backgroundImage.src;
+const img = firstImg ?? backgroundImage;
 const href = `/posts/${post.number}`;
 const title = post.name;
 ---
 
-<Card href={href} title={title} imgSrc={imgSrc} />
+<Card href={href} title={title} imgSrc={img.src} />
