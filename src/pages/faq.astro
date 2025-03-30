@@ -4,8 +4,6 @@ import { unified } from "unified";
 import { fetchPost } from "../esa-utils/fetch";
 import { parseFaqs } from "../esa-utils/faq-parser";
 import Layout from "../layouts/Layout.astro";
-import Footer from "../components/footer.astro";
-import Header from "../components/Header.astro";
 import Toc from "../components/Toc.astro";
 import { getUniqueHashes } from "../esa-utils/hash";
 import StyledHtml from "../components/StyledHtml.astro";
@@ -19,26 +17,20 @@ const ids = getUniqueHashes(faqs.map((faq) => faq.question));
 ---
 
 <Layout pageTitle="よくある質問">
-  <div class="container">
-    <Header />
-    <div class="article-container">
-      <h1 class="title">よくある質問</h1>
-      <Toc showNumbers={true} />
-      <article>
-        {
-          faqs.map((faq, i) => (
-            <div class="faq-item">
-              <h2 class="question" id={ids[i]}>
-                {faq.question}
-              </h2>
-              <StyledHtml html={faq.answerHtml} />
-            </div>
-          ))
-        }
-      </article>
-    </div>
-    <Footer />
-  </div>
+  <h1 class="title">よくある質問</h1>
+  <Toc showNumbers={true} />
+  <article class="faq-article">
+    {
+      faqs.map((faq, i) => (
+        <div class="faq-item">
+          <h2 class="question" id={ids[i]}>
+            {faq.question}
+          </h2>
+          <StyledHtml html={faq.answerHtml} />
+        </div>
+      ))
+    }
+  </article>
 </Layout>
 
 <style>
@@ -48,13 +40,8 @@ const ids = getUniqueHashes(faqs.map((faq) => faq.question));
     border-inline-start: 11px solid var(--theme-color-dark);
     border-block-end: 1px solid var(--border-color);
   }
-  .container {
-    width: 620px;
-    margin: 8px auto;
+  .faq-article {
     counter-reset: number 0;
-  }
-  .article-container {
-    padding: 16px;
   }
   .faq-item {
     padding: 0.5em 1em;
@@ -73,9 +60,6 @@ const ids = getUniqueHashes(faqs.map((faq) => faq.question));
   }
   @media screen and (max-width: 768px) {
     .faq-item {
-      width: 100%;
-    }
-    .container {
       width: 100%;
     }
   }

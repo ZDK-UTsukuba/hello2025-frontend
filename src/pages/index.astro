@@ -2,12 +2,10 @@
 import { fetchPosts } from "../esa-utils/fetch";
 import Layout from "../layouts/Layout.astro";
 import ArticleCard from "../components/ArticleCard.astro";
-import Footer from "../components/footer.astro";
 import { getFirstImg } from "../esa-utils/thumbnail";
 import { fetchPost } from "../esa-utils/fetch";
 import backgroundImage from "../assets/background.svg";
 import Card from "../components/Card.astro";
-import Header from "../components/Header.astro";
 
 const response = await fetchPosts();
 const posts = response.posts;
@@ -18,15 +16,11 @@ const blogPosts = posts.filter((post) => post.number !== faqPost.number);
 ---
 
 <Layout>
-  <div class="container">
-    <Header />
-    <div class="card-container">
-      <h2 class="heading">記事一覧</h2>
-      {blogPosts.map((post) => <ArticleCard post={post} />)}
-      <h2 class="heading">これってどうなの？</h2>
-      <Card href="/faq" title="よくある質問" imgSrc={faqImgSrc} />
-    </div>
-    <Footer />
+  <div class="card-container">
+    <h2 class="heading">記事一覧</h2>
+    {blogPosts.map((post) => <ArticleCard post={post} />)}
+    <h2 class="heading">これってどうなの？</h2>
+    <Card href="/faq" title="よくある質問" imgSrc={faqImgSrc} />
   </div>
 </Layout>
 <style>
@@ -42,15 +36,5 @@ const blogPosts = posts.filter((post) => post.number !== faqPost.number);
     flex-direction: column;
     margin-inline: auto;
     gap: 0.5rem;
-  }
-  .container {
-    margin: 8px auto;
-    width: 620px;
-  }
-  @media screen and (max-width: 768px) {
-    .container {
-      width: 95%;
-      margin-top: 8px;
-    }
   }
 </style>

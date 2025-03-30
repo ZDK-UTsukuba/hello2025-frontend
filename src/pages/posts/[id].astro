@@ -7,9 +7,7 @@ import rehypeStringify from "rehype-stringify";
 import { unified } from "unified";
 import { fetchPosts } from "../../esa-utils/fetch";
 import Layout from "../../layouts/Layout.astro";
-import Footer from "../../components/footer.astro";
 import { imageReplacer } from "../../esa-utils/image-replacer";
-import Header from "../../components/Header.astro";
 import StyledHtml from "../../components/StyledHtml.astro";
 import Toc from "../../components/Toc.astro";
 import { detailsContentMarker } from "../../esa-utils/details-content-marker";
@@ -44,18 +42,11 @@ const articleHtml = await unified()
 ---
 
 <Layout pageTitle={post.name} jsonld={{ attype: "Article" }}>
-  <div class="container">
-    <Header />
-    <div class="article-container">
-      <h1 class="title">{post.name}</h1>
-      <Toc />
-
-      <article>
-        <StyledHtml html={articleHtml.toString()} />
-      </article>
-    </div>
-    <Footer />
-  </div>
+  <h1 class="title">{post.name}</h1>
+  <Toc />
+  <article>
+    <StyledHtml html={articleHtml.toString()} />
+  </article>
 </Layout>
 
 <style>
@@ -65,24 +56,5 @@ const articleHtml = await unified()
     padding-block: 0.1rem;
     border-inline-start: 11px solid var(--theme-color-dark);
     border-block-end: 1px solid var(--border-color);
-  }
-  .container {
-    width: 620px;
-    margin: 8px auto;
-    overflow-wrap: break-word;
-  }
-  .article-container {
-    padding: 16px;
-  }
-  @media screen and (max-width: 768px) {
-    .container {
-      width: 100%;
-    }
-    .toc-nav {
-      width: 100%;
-    }
-    .container {
-      width: 100%;
-    }
   }
 </style>
