@@ -2,17 +2,23 @@
 import { Image } from "astro:assets";
 import Icon from "../../public/YN-icon.png";
 import headerSVG from "../assets/header.svg";
+import headerSVGDark from "../assets/header_for_darkmode.svg";
 ---
 
 <header class="header">
   <a class="top-link" href="/">
     <div class="title-container">
-      <Image
-        class="title"
-        loading="eager"
-        src={headerSVG}
-        alt="新入生情報Web2025 つくばで大学生活を始めるあなたに"
-      />
+      <picture>
+        <source
+          srcset={headerSVGDark.src}
+          media="(prefers-color-scheme: dark)"
+        />
+        <img
+          class="title"
+          src={headerSVG.src}
+          alt="新入生情報Web2025 つくばで大学生活を始めるあなたに"
+        />
+      </picture>
       <Image class="icon" loading="eager" src={Icon} alt="" />
     </div>
 

@@ -48,17 +48,17 @@ const { html } = Astro.props;
     }
     th,
     td {
-      border-inline-start: 1px solid var(--border-color-dark);
-      border-block-start: 1px solid var(--border-color-dark);
+      border-inline-start: 1px solid var(--border-color-accent);
+      border-block-start: 1px solid var(--border-color-accent);
       padding: 4px;
     }
     th:last-of-type,
     td:last-of-type {
-      border-inline-end: 1px solid var(--border-color-dark);
+      border-inline-end: 1px solid var(--border-color-accent);
     }
     tr:last-of-type {
       td {
-        border-block-end: 1px solid var(--border-color-dark);
+        border-block-end: 1px solid var(--border-color-accent);
       }
     }
 
@@ -68,7 +68,7 @@ const { html } = Astro.props;
     }
     a:hover,
     a:active {
-      color: var(--theme-color-dark);
+      color: var(--theme-color-accent);
       text-decoration: underline;
     }
     details {
@@ -84,7 +84,7 @@ const { html } = Astro.props;
       padding-inline-start: 12px;
     }
     details[open] summary {
-      background-color: var(--light-gray);
+      background-color: var(--slight-accent);
       border-radius: 8px 8px 0 0;
       border-block-end: 1px solid var(--border-color);
     }

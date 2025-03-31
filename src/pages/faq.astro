@@ -37,18 +37,19 @@ const ids = getUniqueHashes(faqs.map((faq) => faq.question));
   .title {
     font-size: 2rem;
     padding-inline: 16px;
-    border-inline-start: 11px solid var(--theme-color-dark);
+    border-inline-start: 11px solid var(--theme-color-accent);
     border-block-end: 1px solid var(--border-color);
   }
   .faq-article {
     counter-reset: number 0;
   }
   .faq-item {
-    padding: 0.5em 1em;
-    margin: 2em 0;
-    background: #fff;
-    border: solid 3px #60d398; /*線*/
-    border-radius: 10px; /*角の丸み*/
+    padding-inline: 16px;
+    padding-block-end: 16px;
+    margin-block: 2rem;
+    background: var(--bg-color);
+    border: solid 3px var(--theme-color);
+    border-radius: 8px;
   }
   .question {
     font-size: 1.3rem;
