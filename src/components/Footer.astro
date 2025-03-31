@@ -1,6 +1,6 @@
 ---
-import { Image } from "astro:assets";
 import ZDK_logo from "../assets/zdk_logo_full.svg";
+import ZDK_logo_dark from "../assets/zdk_logo_full_for_darkmode.svg";
 ---
 
 <footer class="footer">
@@ -15,7 +15,17 @@ import ZDK_logo from "../assets/zdk_logo_full.svg";
   </div>
   <div class="footer__logo-container">
     <a href="https://www.zdk.tsukuba.ac.jp/" class="footer__logo-link">
-      <Image src={ZDK_logo} alt="全学学類・専門学群・総合学域群代表者会議" />
+      <picture>
+        <source
+          srcset={ZDK_logo_dark.src}
+          media="(prefers-color-scheme: dark)"
+        />
+        <img
+          class="footer__logo"
+          src={ZDK_logo.src}
+          alt="全学学類・専門学群・総合学域群代表者会議"
+        />
+      </picture>
     </a>
   </div>
 </footer>
