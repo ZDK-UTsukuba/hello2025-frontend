@@ -76,14 +76,14 @@ const { html } = Astro.props;
       border: 1px solid var(--border-color);
       margin-block: 1rem;
     }
-    details summary {
+    details > summary {
       font-size: 0.9rem;
       cursor: pointer;
       border-radius: 8px;
       padding: 0.5rem;
       padding-inline-start: 12px;
     }
-    details[open] summary {
+    details[open] > summary {
       background-color: var(--light-gray);
       border-radius: 8px 8px 0 0;
       border-block-end: 1px solid var(--border-color);
