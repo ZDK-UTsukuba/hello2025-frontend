@@ -52,6 +52,7 @@ export function detailsContentMarker() {
         });
       }
     });
+    detailsPairs.reverse();
     for (const { parent, start, end } of detailsPairs) {
       const startIdx = parent.children.indexOf(start);
       const endIdx = parent.children.indexOf(end);
