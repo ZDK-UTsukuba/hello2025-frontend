@@ -2,16 +2,15 @@
 import Card from "./Card.astro";
 import type { Post } from "../esa-utils/models";
 import { getFirstImg } from "../esa-utils/thumbnail";
-import backgroundImage from "../assets/background.svg";
 
 export interface Props {
   post: Post;
 }
 const { post } = Astro.props;
 const firstImg = await getFirstImg(post);
-const img = firstImg ?? backgroundImage;
+const img = firstImg;
 const href = `/posts/${post.number}`;
 const title = post.name;
 ---
 
-<Card href={href} title={title} imgSrc={img.src} />
+<Card href={href} title={title} imgSrc={img?.src} />
