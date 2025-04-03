@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_レイヤー_2" data-name="レイヤー 2" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
+  <g>
+    <rect x=".59" y="4.41" width="20" height="20" style="fill: #fff;"/>
+    <path d="M20.09,4.91v19H1.09V4.91h19M21.09,3.91H.09v21h21V3.91h0Z" style="fill: #fff;"/>
+    <path d="M19.09,5.91v17H2.09V5.91h17M20.09,4.91H1.09v19h19V4.91h0Z"/>
+  </g>
+  <g>
+    <rect x="4.44" y=".56" width="20" height="20" style="fill: #fff;"/>
+    <path d="M23.94,1.06v19H4.94V1.06h19M24.94.06H3.94v21h21V.06h0Z" style="fill: #fff;"/>
+    <path d="M22.94,2.06v17H5.94V2.06h17M23.94,1.06H4.94v19h19V1.06h0Z"/>
+  </g>
+</svg>
