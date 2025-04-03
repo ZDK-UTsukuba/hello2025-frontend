@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import ZDK_logo from "../assets/zdk_logo_full.svg";
 import ZDK_logo_dark from "../assets/zdk_logo_full_for_darkmode.svg";
 ---
@@ -18,11 +19,13 @@ import ZDK_logo_dark from "../assets/zdk_logo_full_for_darkmode.svg";
       <picture>
         <source
           srcset={ZDK_logo_dark.src}
+          width={ZDK_logo_dark.width}
+          height={ZDK_logo_dark.height}
           media="(prefers-color-scheme: dark)"
         />
-        <img
+        <Image
           class="footer__logo"
-          src={ZDK_logo.src}
+          src={ZDK_logo}
           alt="全学学類・専門学群・総合学域群代表者会議"
         />
       </picture>
