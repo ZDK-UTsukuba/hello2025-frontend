@@ -11,6 +11,7 @@ import { imageReplacer } from "../../esa-utils/image-replacer";
 import StyledHtml from "../../components/StyledHtml.astro";
 import Toc from "../../components/Toc.astro";
 import { detailsContentMarker } from "../../esa-utils/details-content-marker";
+import { externalLinkReplacer } from "../../esa-utils/external-link-replacer";
 
 /**
  * 動的にページを生成するときに必須の関数
@@ -36,6 +37,7 @@ const articleHtml = await unified()
   .use(remarkRehype, { allowDangerousHtml: true })
   .use(rehypeSlug)
   .use(imageReplacer)
+  .use(externalLinkReplacer)
   .use(detailsContentMarker)
   .use(rehypeStringify, { allowDangerousHtml: true })
   .process(post.body_md);
