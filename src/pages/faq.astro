@@ -10,7 +10,7 @@ import StyledHtml from "../components/StyledHtml.astro";
 
 const faqPost = await fetchPost(import.meta.env.ESA_FAQ_NUMBER);
 const faqNodes = unified().use(remarkParse).parse(faqPost.body_md);
-const faqs = parseFaqs(faqNodes);
+const faqs = await parseFaqs(faqNodes);
 console.dir(faqs);
 
 const ids = getUniqueHashes(faqs.map((faq) => faq.question));

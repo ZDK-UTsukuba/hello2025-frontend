@@ -3,6 +3,8 @@ import type { Faq } from "./models";
 import { unified } from "unified";
 import remarkRehype from "remark-rehype";
 import rehypeStringify from "rehype-stringify";
+import { imageReplacer } from "./image-replacer";
+import { externalLinkReplacer } from "./external-link-replacer";
 
 function isH2(node: RootContent): node is Heading {
   return node.type === "heading" && node.depth === 2;
@@ -19,7 +21,7 @@ function getString(node: Heading | Paragraph): string {
     .join("");
 }
 
-export function parseFaqs(ast: Root): Faq[] {
+export async function parseFaqs(ast: Root): Promise<Faq[]> {
   const faqs: Faq[] = [];
 
   for (let i = 0; i < ast.children.length; ) {
@@ -45,10 +47,14 @@ export function parseFaqs(ast: Root): Faq[] {
       type: "root",
       children: answerNodes,
     };
-    const answerHast = unified()
+    const answerHast = await unified()
       .use(remarkRehype, { allowDangerousHtml: true })
-      .runSync(answerRoot);
-    const answerHtml = unified().use(rehypeStringify).stringify(answerHast);
+      .use(imageReplacer)
+      .use(externalLinkReplacer)
+      .run(answerRoot);
+    const answerHtml = unified()
+      .use(rehypeStringify, { allowDangerousHtml: true })
+      .stringify(answerHast);
     faqs.push({
       question: getString(question),
       answerHtml,

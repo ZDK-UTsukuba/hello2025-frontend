@@ -57,3 +57,26 @@ export function isDetailsEnd(node: Node | undefined): node is DetailsNode {
   }
   return true;
 }
+
+export interface AnchorNode extends Node {
+  type: "element";
+  tagName: "a";
+  properties: {
+    href: string;
+    target?: string;
+    rel?: string;
+  };
+}
+
+export function isAnchor(node: Node | undefined): node is AnchorNode {
+  if (node === undefined) {
+    return false;
+  }
+  if (!(node.type === "element" && "tagName" in node)) {
+    return false;
+  }
+  if (node.tagName !== "a") {
+    return false;
+  }
+  return true;
+}
