@@ -1,15 +1,28 @@
 ---
+import { Image } from "astro:assets";
+import Icon from "../../public/YN-icon.png";
 export interface Props {
   href: string | URL;
   title: string;
-  imgSrc: string;
+  imgSrc: string | undefined;
 }
 const { href, title, imgSrc } = Astro.props;
+const useFallbackImage = imgSrc === undefined || imgSrc === "";
 ---
 
 <a class="card" href={href}>
   <h3 class="card-text">{title}</h3>
-  <img class="thumbnail" src={imgSrc} alt="" />
+  {
+    useFallbackImage ? (
+      <div class="fallback-bg">
+        <div class="fallback-thumbnail">
+          <Image class="fallback-icon" src={Icon} alt="" />
+        </div>
+      </div>
+    ) : (
+      <img class="thumbnail" src={imgSrc} alt="" />
+    )
+  }
 </a>
 
 <style>
@@ -37,8 +50,30 @@ const { href, title, imgSrc } = Astro.props;
     object-fit: cover;
     border-radius: 0 8px 8px 0;
   }
+  .fallback-bg {
+    border-radius: 0 8px 8px 0;
+    background-color: var(--fallback-bg);
+  }
+  .fallback-thumbnail {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 12rem;
+    height: 8rem;
+    border-radius: 0 8px 8px 0;
+    background-color: white;
+    opacity: 60%;
+  }
+  .fallback-icon {
+    width: auto;
+    height: 60%;
+  }
   @media screen and (max-width: 768px) {
     .thumbnail {
+      width: 9rem;
+      height: 7rem;
+    }
+    .fallback-thumbnail {
       width: 9rem;
       height: 7rem;
     }
