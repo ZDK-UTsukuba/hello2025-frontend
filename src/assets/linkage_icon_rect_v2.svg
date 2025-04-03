@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg id="_レイヤー_1" data-name="レイヤー 1" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
+<svg id="_レイヤー_1" data-name="レイヤー 1" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" style="stroke: var(--theme-color);">
   <g>
-    <rect x="1.69" y="7.17" width="18.13" height="13.96" style="fill: #fff;"/>
-    <path d="M19.32,7.67v12.96H2.19V7.67h17.13M20.32,6.67H1.19v14.96h19.13V6.67h0Z" style="fill: #fff;"/>
+    <rect x="1.69" y="7.17" width="18.13" height="13.96" style="fill: transparent;"/>
+    <path d="M19.32,7.67v12.96H2.19V7.67h17.13M20.32,6.67H1.19v14.96h19.13V6.67h0Z" style="fill: transparent;"/>
     <path d="M17.82,9.17v9.96H3.69v-9.96h14.13M19.32,7.67H2.19v12.96h17.13V7.67h0Z"/>
   </g>
   <g>
-    <rect x="5.18" y="3.87" width="18.13" height="13.96" style="fill: #fff;"/>
-    <path d="M22.81,4.37v12.96H5.68V4.37h17.13M23.81,3.37H4.68v14.96h19.13V3.37h0Z" style="fill: #fff;"/>
+    <rect x="5.18" y="3.87" width="18.13" height="13.96" style="fill: transparent;"/>
+    <path d="M22.81,4.37v12.96H5.68V4.37h17.13M23.81,3.37H4.68v14.96h19.13V3.37h0Z" style="fill: transparent;"/>
     <path d="M21.31,5.87v9.96H7.18V5.87h14.13M22.81,4.37H5.68v12.96h17.13V4.37h0Z"/>
   </g>
   <g>
-    <rect x="5.18" y="3.87" width="18.13" height="13.96" style="fill: #fff;"/>
-    <path d="M22.81,4.37v12.96H5.68V4.37h17.13M23.81,3.37H4.68v14.96h19.13V3.37h0Z" style="fill: #fff;"/>
+    <rect x="5.18" y="3.87" width="18.13" height="13.96" style="fill: transparent;"/>
+    <path d="M22.81,4.37v12.96H5.68V4.37h17.13M23.81,3.37H4.68v14.96h19.13V3.37h0Z" />
     <path d="M21.31,5.87v9.96H7.18V5.87h14.13M22.81,4.37H5.68v12.96h17.13V4.37h0Z"/>
   </g>
 </svg>
